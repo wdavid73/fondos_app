@@ -23,7 +23,10 @@ class _HomeScreenState extends State<HomeScreen> {
     _init();
   }
 
-  void _init() {}
+  void _init() {
+    final bloc = getIt.get<FundBloc>();
+    bloc.loadFunds();
+  }
 
   @override
   Widget build(BuildContext context) {

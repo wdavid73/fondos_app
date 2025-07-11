@@ -58,6 +58,7 @@ flutter:
     - assets/icon/
     - assets/fonts/
     - assets/images/
+    - assets/mocks/
 
   fonts:
     - family: Inter

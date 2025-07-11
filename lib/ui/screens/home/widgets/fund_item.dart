@@ -1,17 +1,20 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_starter_kit/config/config.dart';
+import 'package:flutter_starter_kit/data/models/fund_model.dart';
+import 'package:flutter_starter_kit/ui/shared/styles/formats.dart';
 import 'package:flutter_starter_kit/ui/widgets/widgets.dart';
 
 class FundItem extends StatelessWidget {
-  const FundItem({super.key});
+  final FundModel fund;
+  const FundItem({super.key, required this.fund});
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
       contentPadding: const EdgeInsets.symmetric(horizontal: 16),
       title: Text(
-        "Tech Growth Fund",
+        fund.name,
         style: context.textTheme.titleMedium,
       ),
       subtitle: Column(
@@ -19,13 +22,13 @@ class FundItem extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Text(
-            "Minimum: \$500",
+            "Minimum: ${formatNumberMillion(fund.amountMin)}",
             style: context.textTheme.bodyMedium?.copyWith(
               color: ColorTheme.textSecondary,
             ),
           ),
           Text(
-            "Category: Technology Stocks",
+            "Category: ${fund.category}",
             style: context.textTheme.bodyMedium?.copyWith(
               color: ColorTheme.textSecondary,
             ),

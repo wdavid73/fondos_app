@@ -1,4 +1,6 @@
 import 'package:flutter_starter_kit/data/data.dart';
+import 'package:flutter_starter_kit/data/datasources/mock_fund_datasource.dart';
+import 'package:flutter_starter_kit/data/repositories/fund_repository_impl.dart';
 import 'package:flutter_starter_kit/domain/repositories/repositories.dart';
 import 'package:flutter_starter_kit/domain/usecases/usecases.dart';
 import 'package:flutter_starter_kit/ui/blocs/blocs.dart';
@@ -17,8 +19,19 @@ class AppDependencyInjection {
       ),
     );
 
+    getIt.registerLazySingleton<FundRepository>(
+      () => FundRepositoryImpl(
+        MockFundDataSource(),
+      ),
+    );
+
+    /// Use Cases
     getIt.registerLazySingleton<AuthUseCase>(
       () => AuthUseCase(getIt<AuthRepository>()),
+    );
+
+    getIt.registerLazySingleton<FundUsecase>(
+      () => FundUsecase(getIt.get<FundRepository>()),
     );
 
     /// Services
@@ -35,6 +48,12 @@ class AppDependencyInjection {
       () => AuthBloc(
         getIt<AuthUseCase>(),
         getIt<KeyValueStorageService>(),
+      ),
+    );
+
+    getIt.registerLazySingleton<FundBloc>(
+      () => FundBloc(
+        getIt.get<FundUsecase>(),
       ),
     );
 
