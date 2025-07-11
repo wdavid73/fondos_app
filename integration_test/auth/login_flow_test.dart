@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -13,7 +12,6 @@ import 'package:flutter_starter_kit/config/config.dart';
 import 'package:flutter_starter_kit/ui/blocs/blocs.dart';
 import 'package:flutter_starter_kit/ui/cubits/cubits.dart';
 import 'package:flutter_starter_kit/ui/screens/screens.dart';
-import 'package:flutter_starter_kit/api/api.dart';
 import 'package:flutter_starter_kit/data/data.dart';
 import 'package:flutter_starter_kit/ui/shared/inputs/inputs.dart';
 
@@ -207,14 +205,14 @@ void main() {
       ));
 
       // Mock the login method of the AuthUse.
-      when(() => mockAuthUse.login(email.value, password.value)).thenAnswer(
+      /* when(() => mockAuthUse.login(email.value, password.value)).thenAnswer(
         (_) async => ResponseFailed(
           InternalServerErrorException(
             requestOptions: RequestOptions(),
             message: "Mock internal Server Error",
           ),
         ),
-      );
+      ); */
 
       // Tap the login button.
       await tester.tap(loginButton);
@@ -345,10 +343,10 @@ void main() {
       ));
 
       // Mock the login method of the AuthUse.
-      when(() => mockAuthUse.login(email.value, password.value))
+      /* when(() => mockAuthUse.login(email.value, password.value))
           .thenAnswer((_) async {
         return ResponseSuccess(loginSuccess, 200);
-      });
+      }); */
 
       // Tap the login button
       await tester.tap(loginButton);

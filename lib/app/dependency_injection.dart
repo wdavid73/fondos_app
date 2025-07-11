@@ -1,4 +1,3 @@
-import 'package:flutter_starter_kit/api/api.dart';
 import 'package:flutter_starter_kit/data/data.dart';
 import 'package:flutter_starter_kit/domain/repositories/repositories.dart';
 import 'package:flutter_starter_kit/domain/usecases/usecases.dart';
@@ -14,7 +13,7 @@ class AppDependencyInjection {
     /// Repositories
     getIt.registerLazySingleton<AuthRepository>(
       () => AuthRepositoryImpl(
-        ApiAuthDataSource(ApiClient.instance),
+        ApiAuthDataSource(),
       ),
     );
 
@@ -31,10 +30,6 @@ class AppDependencyInjection {
 
     // Singleton
     getIt.registerLazySingleton<ThemeModeCubit>(() => ThemeModeCubit());
-
-    getIt.registerLazySingleton<IntroductionCubit>(
-      () => IntroductionCubit(getIt.get<KeyValueStorageService>()),
-    );
 
     getIt.registerLazySingleton<AuthBloc>(
       () => AuthBloc(

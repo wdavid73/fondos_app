@@ -1,5 +1,3 @@
-import 'package:flutter_starter_kit/api/api.dart';
-
 /// Defines the contract for authentication-related operations.
 ///
 /// Implementations of this class are responsible for handling user authentication,
@@ -17,7 +15,7 @@ abstract class AuthRepository {
   ///   - [email]: The user's email address.
   ///   - [password]: The user's password.
   ///
-  Future<ResponseState> login(String email, String password);
+  Future<void> login(String email, String password);
 
   /// Registers a new user with the provided details.
   ///
@@ -32,8 +30,7 @@ abstract class AuthRepository {
   ///   - [password]: The user's chosen password.
   ///   - [fullName]: The user's full name.
   ///
-  Future<ResponseState> register(
-      String email, String password, String fullName);
+  Future<void> register(String email, String password, String fullName);
 
   /// Checks the authentication status of a user.
   ///
@@ -46,5 +43,5 @@ abstract class AuthRepository {
   /// Parameters:
   ///   - [token]: The authentication token to verify.
   ///
-  Future<ResponseState> checkAuthStatus(String token);
+  Future<void> checkAuthStatus(String token);
 }

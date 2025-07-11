@@ -1,4 +1,3 @@
-import 'package:flutter_starter_kit/api/api.dart';
 import 'package:flutter_starter_kit/domain/datasources/auth_datasource.dart';
 import 'package:flutter_starter_kit/domain/repositories/auth_repository.dart';
 
@@ -24,7 +23,7 @@ class AuthRepositoryImpl extends AuthRepository {
   ///   - [ResponseSuccess]: If the token is valid, containing user session details.
   ///   - [ResponseFailed]: If the token is invalid or expired, containing an error message.
   @override
-  Future<ResponseState> checkAuthStatus(String token) {
+  Future<void> checkAuthStatus(String token) {
     return datasource.checkAuthStatus(token);
   }
 
@@ -40,7 +39,7 @@ class AuthRepositoryImpl extends AuthRepository {
   ///   - [ResponseSuccess]: If authentication is successful, containing user data and a token.
   ///   - [ResponseFailed]: If authentication fails, containing an error message.
   @override
-  Future<ResponseState> login(String email, String password) {
+  Future<void> login(String email, String password) {
     return datasource.login(email, password);
   }
 
@@ -57,8 +56,7 @@ class AuthRepositoryImpl extends AuthRepository {
   ///   - [ResponseSuccess]: If registration is successful, containing user data and a token.
   ///   - [ResponseFailed]: If registration fails, containing an error message.
   @override
-  Future<ResponseState> register(
-      String email, String password, String fullName) {
+  Future<void> register(String email, String password, String fullName) {
     return datasource.register(email, password, fullName);
   }
 }

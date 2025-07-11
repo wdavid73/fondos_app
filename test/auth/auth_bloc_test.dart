@@ -1,8 +1,5 @@
 import 'package:bloc_test/bloc_test.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_starter_kit/api/api.dart';
-import 'package:flutter_starter_kit/data/data.dart';
 import 'package:flutter_starter_kit/ui/blocs/auth/auth_bloc.dart';
 import 'package:mocktail/mocktail.dart';
 
@@ -40,18 +37,18 @@ void main() {
     blocTest<AuthBloc, AuthState>(
       "emits [checking, authenticated] when login is successful",
       build: () {
-        final authResponse = AuthResponseModel(
+        /* final authResponse = AuthResponseModel(
           token: 'fake_token',
           user: UserModel(
             id: '1',
             fullName: 'John Doe',
             email: 'johndoe@example.com',
           ),
-        );
+        ); */
 
-        when(() => mockAuthUseCase.login(any(), any())).thenAnswer(
+        /* when(() => mockAuthUseCase.login(any(), any())).thenAnswer(
           (_) async => ResponseSuccess(authResponse, 200),
-        );
+        ); */
 
         when(() => mockStorageService.setKeyValue<String>(any(), any()))
             .thenAnswer((_) async {}); // Future<void>
@@ -77,10 +74,10 @@ void main() {
     blocTest<AuthBloc, AuthState>(
       "emits [checking, notAuthenticated] when login is fails",
       build: () {
-        when(() => mockAuthUseCase.login(any(), any())).thenAnswer(
+        /* when(() => mockAuthUseCase.login(any(), any())).thenAnswer(
           (_) async => ResponseFailed(DioException(
               message: "Login failed", requestOptions: RequestOptions())),
-        );
+        ); */
         return authBloc;
       },
       act: (bloc) => bloc.login("wrong@example", "wrongPassword"),
@@ -126,21 +123,21 @@ void main() {
     blocTest<AuthBloc, AuthState>(
       "emits [checking, authenticated] when token is valid and user data is loaded",
       build: () {
-        final someMockUser = UserModel(
+        /* final someMockUser = UserModel(
           id: '1',
           email: 'user@example.com',
           fullName: 'Joe Doe',
-        );
+        ); */
 
         when(() => mockStorageService.getValue<String>('token'))
             .thenAnswer((_) async => "valid_token");
 
-        when(() => mockAuthUseCase.checkAuthStatus("valid_token")).thenAnswer(
+        /* when(() => mockAuthUseCase.checkAuthStatus("valid_token")).thenAnswer(
           (_) async => ResponseSuccess(
             AuthResponseModel(token: 'valid_token', user: someMockUser),
             200,
           ),
-        );
+        ); */
 
         when(() => mockStorageService.setKeyValue('token', 'valid_token'))
             .thenAnswer((_) async {});
@@ -167,12 +164,12 @@ void main() {
         when(() => mockStorageService.getValue<String>('token'))
             .thenAnswer((_) async => "mocked_token");
 
-        when(() => mockAuthUseCase.checkAuthStatus("valid_token")).thenAnswer(
+        /* when(() => mockAuthUseCase.checkAuthStatus("valid_token")).thenAnswer(
           (_) async => ResponseFailed(DioException(
             message: "checkAuthStatus failed",
             requestOptions: RequestOptions(),
           )),
-        );
+        ); */
 
         when(() => mockStorageService.removeKey("token"))
             .thenAnswer((_) async => true);
@@ -212,18 +209,18 @@ void main() {
     blocTest<AuthBloc, AuthState>(
       'emits [isCreating false, isCreating true, authenticated] when register is successful',
       build: () {
-        final authResponse = AuthResponseModel(
+        /* final authResponse = AuthResponseModel(
           token: "fake_token",
           user: UserModel(
             email: "fake@email.com",
             fullName: "fake user",
             id: "1",
           ),
-        );
+        ); */
 
-        when(() => mockAuthUseCase.register(any(), any(), any())).thenAnswer(
+        /* when(() => mockAuthUseCase.register(any(), any(), any())).thenAnswer(
           (_) async => ResponseSuccess(authResponse, 201),
-        );
+        ); */
 
         when(() => mockStorageService.setKeyValue<String>(any(), any()))
             .thenAnswer((_) async {});

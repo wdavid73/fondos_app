@@ -5,7 +5,6 @@ import 'package:flutter_starter_kit/config/config.dart';
 import 'package:flutter_starter_kit/ui/shared/shared.dart';
 import 'package:flutter_starter_kit/ui/screens/home/expanded_layout/home_screen_expanded_layout.dart';
 import 'package:flutter_starter_kit/ui/screens/home/medium_layout/home_screen_medium_layout.dart';
-import './widgets/drawer_home.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -14,7 +13,6 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return AdaptiveScaffold(
       appBar: _appBarHome(context),
-      drawer: DrawerHome(),
       bottomNavigationBar: _BottomNavigationBar(),
       navigationRail: _MediumNavigationRailHome(),
       navigationDrawer: _ExpandedNavigationDrawerHome(),

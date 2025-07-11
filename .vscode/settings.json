@@ -1,6 +1,9 @@
 {
   "dart.flutterSdkPath": ".fvm/versions/stable",
-  "cSpell.words": ["usecase", "usecases"],
+  "cSpell.words": [
+    "usecase",
+    "usecases"
+  ],
   "[dart]": {
     "editor.inlayHints.enabled": "on"
   },

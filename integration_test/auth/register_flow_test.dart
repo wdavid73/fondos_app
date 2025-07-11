@@ -1,11 +1,9 @@
 import 'dart:async';
 
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:formz/formz.dart';
-import 'package:flutter_starter_kit/api/api.dart';
 import 'package:flutter_starter_kit/data/data.dart';
 import 'package:go_router/go_router.dart';
 import 'package:integration_test/integration_test.dart';
@@ -442,7 +440,7 @@ void main() {
 
         setUpRegisterFormState(email, password, confirmPassword, fullName);
 
-        when(() => mockAuthUse.register(
+        /* when(() => mockAuthUse.register(
             email.value, password.value, fullName.value)).thenAnswer(
           (_) async => ResponseFailed(
             BadResponse(
@@ -450,7 +448,7 @@ void main() {
               message: "Mock bad request",
             ),
           ),
-        );
+        ); */
 
         await tester.pumpAndSettle();
 
@@ -517,10 +515,10 @@ void main() {
 
         setUpRegisterFormState(email, password, confirmPassword, fullName);
 
-        when(() => mockAuthUse.register(
+        /* when(() => mockAuthUse.register(
             email.value, password.value, fullName.value)).thenAnswer(
           (_) async => ResponseSuccess(registerSuccess, 201),
-        );
+        ); */
 
         await tester.pumpAndSettle();
 

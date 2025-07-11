@@ -1,5 +1,3 @@
-import 'package:dio/dio.dart';
-import 'package:flutter_starter_kit/api/api.dart';
 import 'package:flutter_starter_kit/data/data.dart';
 import 'package:flutter_starter_kit/domain/datasources/auth_datasource.dart';
 
@@ -24,31 +22,16 @@ import 'package:flutter_starter_kit/domain/datasources/auth_datasource.dart';
 /// [ResponseFailed].
 class ApiAuthDataSource implements AuthDataSource {
   /// The [ApiClient] used to make HTTP requests.
-  final ApiClient _client;
 
   /// Creates an [ApiAuthDataSource] instance.
   ///
   /// Parameters:
   ///   - [_client]: The [ApiClient] used to make HTTP requests.
-  ApiAuthDataSource(this._client);
+  ApiAuthDataSource();
 
   @override
-  Future<ResponseState> checkAuthStatus(String token) async {
-    try {
-      final response = await _client.get(ApiEndpoint.authCheckStatus);
-      final AuthResponseModel user = AuthResponseModel.fromJson(response.data);
-      return ResponseSuccess(user, 200);
-    } on DioException catch (e) {
-      return ResponseFailed(e);
-    } catch (e) {
-      return ResponseFailed(
-        DioException(
-          requestOptions: RequestOptions(path: ApiEndpoint.authLogin),
-          error: e,
-          message: e.toString(),
-        ),
-      );
-    }
+  Future<void> checkAuthStatus(String token) async {
+    throw UnimplementedError();
   }
 
   /// Attempts to log in a user with the given [email] and [password].
@@ -66,25 +49,8 @@ class ApiAuthDataSource implements AuthDataSource {
   /// Returns:
   ///   - A [Future] that resolves to a [ResponseState] representing the result of the login attempt.
   @override
-  Future<ResponseState> login(String email, String password) async {
-    try {
-      final response = await _client.post(ApiEndpoint.authLogin, {
-        'email': email,
-        'password': password,
-      });
-      final AuthResponseModel user = AuthResponseModel.fromJson(response.data);
-      return ResponseSuccess(user, 200);
-    } on DioException catch (e) {
-      return ResponseFailed(e);
-    } catch (e) {
-      return ResponseFailed(
-        DioException(
-          requestOptions: RequestOptions(path: ApiEndpoint.authLogin),
-          error: e,
-          message: e.toString(),
-        ),
-      );
-    }
+  Future<void> login(String email, String password) async {
+    throw UnimplementedError();
   }
 
   /// Attempts to register a new user with the given [email], [password], and [fullName].
@@ -102,30 +68,11 @@ class ApiAuthDataSource implements AuthDataSource {
   /// Returns:
   ///   - A [Future] that resolves to a [ResponseState] representing the result of the registration attempt.
   @override
-  Future<ResponseState> register(
+  Future<void> register(
     String email,
     String password,
     String fullName,
   ) async {
-    try {
-      final response = await _client.post(ApiEndpoint.authRegister, {
-        'email': email,
-        'password': password,
-        'fullName': fullName,
-      });
-
-      final AuthResponseModel user = AuthResponseModel.fromJson(response.data);
-      return ResponseSuccess(user, 200);
-    } on DioException catch (e) {
-      return ResponseFailed(e);
-    } catch (e) {
-      return ResponseFailed(
-        DioException(
-          requestOptions: RequestOptions(path: ApiEndpoint.authLogin),
-          error: e,
-          message: e.toString(),
-        ),
-      );
-    }
+    throw UnimplementedError();
   }
 }
