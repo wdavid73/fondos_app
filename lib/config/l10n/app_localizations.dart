@@ -104,6 +104,12 @@ abstract class AppLocalizations {
   /// **'English'**
   String get language;
 
+  /// No description provided for @appName.
+  ///
+  /// In en, this message translates to:
+  /// **'Investo'**
+  String get appName;
+
   /// No description provided for @general.
   ///
   /// In en, this message translates to:
@@ -901,6 +907,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Try again'**
   String get tryAgain;
+
+  /// No description provided for @myInvestments.
+  ///
+  /// In en, this message translates to:
+  /// **'My Investments'**
+  String get myInvestments;
+
+  /// No description provided for @transactions.
+  ///
+  /// In en, this message translates to:
+  /// **'Transactions'**
+  String get transactions;
+
+  /// No description provided for @exploreFunds.
+  ///
+  /// In en, this message translates to:
+  /// **'Explore funds'**
+  String get exploreFunds;
+
+  /// No description provided for @descriptionExploreFunds.
+  ///
+  /// In en, this message translates to:
+  /// **'Discover a wide range of investment funds tailored to your financial goals. Browse through our curated selection and find the perfect fit for your portfolio.'**
+  String get descriptionExploreFunds;
+
+  /// No description provided for @subscribe.
+  ///
+  /// In en, this message translates to:
+  /// **'Subscribe'**
+  String get subscribe;
+
+  /// No description provided for @myFunds.
+  ///
+  /// In en, this message translates to:
+  /// **'My funds'**
+  String get myFunds;
+
+  /// No description provided for @activeFunds.
+  ///
+  /// In en, this message translates to:
+  /// **'Active funds.'**
+  String get activeFunds;
+
+  /// No description provided for @balance.
+  ///
+  /// In en, this message translates to:
+  /// **'Balance'**
+  String get balance;
+
+  /// No description provided for @totalBalance.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Balance'**
+  String get totalBalance;
 }
 
 class _AppLocalizationsDelegate

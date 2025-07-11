@@ -14,4 +14,8 @@ class RouteConstants {
 
   /// The path for the settings screen.
   static const String settingsScreen = '/settings';
+
+  static const String myInvestmentsScreen = '/my_investment';
+
+  static const String transactionsScreen = '/transactions';
 }

@@ -4,15 +4,20 @@ import 'package:flutter_starter_kit/ui/shared/shared.dart';
 
 class CustomSwitch extends StatelessWidget {
   final String title;
+  final String? subTitle;
   final Icon? icon;
   final bool switchValue;
   final void Function(bool)? onChanged;
+  final double? titleFontSize;
+
   const CustomSwitch({
     super.key,
     required this.title,
+    this.subTitle,
     this.icon,
     this.switchValue = false,
     this.onChanged,
+    this.titleFontSize,
   });
 
   @override
@@ -24,10 +29,27 @@ class CustomSwitch extends StatelessWidget {
         Row(
           children: [
             if (icon != null) icon!,
-            AppSpacing.sm,
-            Text(
-              title,
-              style: context.textTheme.bodyMedium,
+            if (icon != null) AppSpacing.sm,
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  title,
+                  style: context.textTheme.bodyLarge?.copyWith(
+                    fontSize: titleFontSize,
+                  ),
+                ),
+                if (subTitle != null)
+                  Text(
+                    "$subTitle",
+                    style: context.textTheme.bodySmall?.copyWith(
+                      color: ColorTheme.textSecondary,
+                      fontSize:
+                          titleFontSize != null ? titleFontSize! - 2 : null,
+                    ),
+                  ),
+              ],
             ),
           ],
         ),

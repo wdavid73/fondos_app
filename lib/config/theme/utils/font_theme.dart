@@ -3,7 +3,7 @@ import 'package:flutter_starter_kit/config/config.dart';
 
 class AppTypography {
   // Font Family
-  static const String fontFamily = 'MontserratAlternates';
+  static const String fontFamily = 'Inter';
 
   // Font Weights
   static const FontWeight lightWeight = FontWeight.w300;

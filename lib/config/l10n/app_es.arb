@@ -1,6 +1,7 @@
 {
   "@@locale": "es",
   "language": "Español",
+  "appName": "Investo",
   "general": "General",
   "name": "Nombre",
   "email": "Correo",
@@ -141,5 +142,14 @@
   "@about": {},
   "version": "Versión",
   "@version": {},
-  "tryAgain": "Try again"
+  "tryAgain": "Try again",
+  "myInvestments": "Mis fondos",
+  "transactions": "Transacciones",
+  "exploreFunds": "Explorar fondos",
+  "descriptionExploreFunds": "Descubra una amplia gama de fondos de inversión adaptados a sus objetivos financieros. Eche un vistazo a nuestra cuidada selección y encuentre el fondo perfecto para su cartera.",
+  "subscribe": "Suscríbete",
+  "myFunds": "Mis fondos",
+  "activeFunds": "Fondos activos.",
+  "balance": "Balance",
+  "totalBalance": "Balance total"
 }

@@ -77,6 +77,8 @@ class DarkTheme {
   /// The base popup menu theme data for the dark theme.
   static final _basePopupMenuThemeData = ThemeConstants.basePopupMenuThemeData;
 
+  static final _baseDataTableThemeData = ThemeConstants.baseDataTableThemeData;
+
   /// Resolver for color status, typically used for interactive widget states.
   static final _resolveColorStatusWith = ThemeConstants.resolveColorStatusWith;
 
@@ -118,13 +120,9 @@ class DarkTheme {
       ),
       appBarTheme: _baseAppBarTheme,
       cardTheme: _baseCardTheme.copyWith(
-        color: ColorTheme.backgroundColorDark,
+        color: ColorTheme.navigationBackgroundColorDark,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
-          side: BorderSide(
-            color: ColorTheme.white,
-            width: 2,
-          ),
         ),
       ),
       dividerTheme: _baseDividerTheme,
@@ -225,6 +223,22 @@ class DarkTheme {
       ),
       popupMenuTheme: _basePopupMenuThemeData.copyWith(
         iconSize: context.dp(3),
+      ),
+      dataTableTheme: _baseDataTableThemeData.copyWith(
+        dataTextStyle: baseTextThemeDark.bodySmall,
+        headingTextStyle: baseTextThemeDark.titleMedium,
+        decoration: BoxDecoration(
+          color: ColorTheme.navigationBackgroundColorDark,
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: [
+            BoxShadow(
+              color: Color(0xFF000000).withValues(alpha: 0.27),
+              offset: Offset(4, 5),
+              blurRadius: 18,
+              spreadRadius: 5,
+            ),
+          ],
+        ),
       ),
     );
   }

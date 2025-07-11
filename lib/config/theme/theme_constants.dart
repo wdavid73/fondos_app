@@ -218,13 +218,9 @@ class ThemeConstants {
   /// light and dark themes. It sets a default elevation, a rounded
   /// rectangle shape with a border.
   static final baseCardTheme = CardThemeData(
-    elevation: 0,
+    elevation: 6,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(20),
-      side: BorderSide(
-        color: ColorTheme.textPrimary,
-        width: 2,
-      ),
     ),
   );
 
@@ -411,6 +407,23 @@ class ThemeConstants {
     menuPadding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
     color: ColorTheme.lightPrimaryColor,
     position: PopupMenuPosition.over,
+  );
+
+  static final baseDataTableThemeData = DataTableThemeData(
+    dataTextStyle: baseTextTheme.bodySmall,
+    headingTextStyle: baseTextTheme.titleMedium,
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(16),
+      color: ColorTheme.backgroundLight,
+      boxShadow: [
+        BoxShadow(
+          color: Color(0xFF000000).withValues(alpha: 0.27),
+          offset: Offset(4, 5),
+          blurRadius: 18,
+          spreadRadius: 5,
+        ),
+      ],
+    ),
   );
 
   /// Resolves a color based on the [WidgetState] of a widget.

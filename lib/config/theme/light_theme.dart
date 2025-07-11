@@ -28,6 +28,7 @@ class LightTheme {
   static final _baseNavigationDrawer = ThemeConstants.baseNavigationDrawer;
   static final _baseIconTheme = ThemeConstants.baseIconTheme;
   static final _basePopupMenuThemeData = ThemeConstants.basePopupMenuThemeData;
+  static final _baseDataTableThemeData = ThemeConstants.baseDataTableThemeData;
 
   static ThemeData getLightTheme(BuildContext context) {
     final textScaleFactor = context.tsf.scale(ThemeConstants.fontSizeFactor);
@@ -42,11 +43,12 @@ class LightTheme {
       ),
       textTheme: baseTextTheme.apply(fontSizeFactor: textScaleFactor),
       appBarTheme: _baseAppBarTheme.copyWith(
-        backgroundColor: ColorTheme.white,
-        surfaceTintColor: ColorTheme.primaryColor,
+        backgroundColor: ColorTheme.backgroundLight,
+        surfaceTintColor: ColorTheme.navigationBackgroundColorLight,
         iconTheme: baseIconTheme.copyWith(
           color: ColorTheme.secondaryColor,
         ),
+        elevation: 5,
       ),
       cardTheme: _baseCardTheme.copyWith(
         color: ColorTheme.backgroundColor,
@@ -70,7 +72,7 @@ class LightTheme {
       floatingActionButtonTheme: _baseFABTheme,
       iconButtonTheme: getBaseIconButtonTheme(
         iconColorResolver: _resolveColorStatusWith,
-        iconSize: context.dp(3),
+        iconSize: context.dp(1.8),
       ),
       drawerTheme: _baseDrawerTheme,
       listTileTheme: _baseListTileTheme,
@@ -99,6 +101,7 @@ class LightTheme {
       popupMenuTheme: _basePopupMenuThemeData.copyWith(
         iconSize: context.dp(3),
       ),
+      dataTableTheme: _baseDataTableThemeData,
     );
   }
 }

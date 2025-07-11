@@ -12,6 +12,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get language => 'Español';
 
   @override
+  String get appName => 'Investo';
+
+  @override
   String get general => 'General';
 
   @override
@@ -449,4 +452,32 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get tryAgain => 'Try again';
+
+  @override
+  String get myInvestments => 'Mis fondos';
+
+  @override
+  String get transactions => 'Transacciones';
+
+  @override
+  String get exploreFunds => 'Explorar fondos';
+
+  @override
+  String get descriptionExploreFunds =>
+      'Descubra una amplia gama de fondos de inversión adaptados a sus objetivos financieros. Eche un vistazo a nuestra cuidada selección y encuentre el fondo perfecto para su cartera.';
+
+  @override
+  String get subscribe => 'Suscríbete';
+
+  @override
+  String get myFunds => 'Mis fondos';
+
+  @override
+  String get activeFunds => 'Fondos activos.';
+
+  @override
+  String get balance => 'Balance';
+
+  @override
+  String get totalBalance => 'Balance total';
 }

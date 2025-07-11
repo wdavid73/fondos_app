@@ -1,4 +1,6 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_starter_kit/ui/widgets/shared_app_bar.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_starter_kit/ui/screens/screens.dart';
 import 'routes_constants.dart';
@@ -27,24 +29,6 @@ class AppRoutes {
         builder: (context, state) => const CheckAuthStatusScreen(),
       ),
 
-      ///* HOME ROUTE
-      GoRoute(
-        path: RouteConstants.home,
-        name: "home",
-        builder: (context, state) => const HomeScreen(),
-      ),
-
-      /// SETTINGS ROUTE
-      GoRoute(
-        path: RouteConstants.settingsScreen,
-        name: "settings",
-        /*builder: (context, state) => const SettingsScreen(),*/
-        pageBuilder: (_, __) => _transitionPage(
-          child: const SettingsScreen(),
-          transitionType: TransitionType.slideRight,
-        ),
-      ),
-
       ///* AUTH ROUTES
       GoRoute(
         path: RouteConstants.loginScreen,
@@ -56,9 +40,43 @@ class AppRoutes {
         name: "register",
         builder: (context, state) => const RegisterScreen(),
       ),
+
+      if (kIsWeb)
+        ShellRoute(
+          builder: (context, state, child) {
+            return Scaffold(
+              appBar: WebAppBar(),
+              body: child,
+            );
+          },
+          routes: routes,
+        )
+      else
+        ...routes
     ];
   }
 }
+
+List<GoRoute> routes = [
+  ///* HOME ROUTE
+  GoRoute(
+    path: RouteConstants.home,
+    name: "home",
+    builder: (context, state) => const HomeScreen(),
+  ),
+
+  GoRoute(
+    path: RouteConstants.myInvestmentsScreen,
+    name: 'my_investment',
+    builder: (_, __) => const MyInvestmentsScreen(),
+  ),
+
+  GoRoute(
+    path: RouteConstants.transactionsScreen,
+    name: 'transactions',
+    builder: (_, __) => const TransactionsScreen(),
+  ),
+];
 
 CustomTransitionPage<void> _transitionPage({
   required Widget child,

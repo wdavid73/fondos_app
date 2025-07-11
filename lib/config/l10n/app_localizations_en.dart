@@ -12,6 +12,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get language => 'English';
 
   @override
+  String get appName => 'Investo';
+
+  @override
   String get general => 'General';
 
   @override
@@ -438,4 +441,32 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get tryAgain => 'Try again';
+
+  @override
+  String get myInvestments => 'My Investments';
+
+  @override
+  String get transactions => 'Transactions';
+
+  @override
+  String get exploreFunds => 'Explore funds';
+
+  @override
+  String get descriptionExploreFunds =>
+      'Discover a wide range of investment funds tailored to your financial goals. Browse through our curated selection and find the perfect fit for your portfolio.';
+
+  @override
+  String get subscribe => 'Subscribe';
+
+  @override
+  String get myFunds => 'My funds';
+
+  @override
+  String get activeFunds => 'Active funds.';
+
+  @override
+  String get balance => 'Balance';
+
+  @override
+  String get totalBalance => 'Total Balance';
 }

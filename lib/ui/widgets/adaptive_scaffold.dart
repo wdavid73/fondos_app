@@ -42,7 +42,7 @@ class AdaptiveScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: context.orientation == Orientation.portrait ? appBar : null,
+      appBar: appBar,
       backgroundColor: scaffoldBackgroundColor,
       drawer: (context.width < 900 && drawer != null) ? drawer : null,
       body: LayoutBuilder(
@@ -83,7 +83,7 @@ class AdaptiveScaffold extends StatelessWidget {
         deviceType == DeviceType.other) {
       return _ExpandedLayout(
         navigationDrawer: navigationDrawer,
-        child: expandedLayout!,
+        child: expandedLayout ?? _CompactLayout(child: child),
       );
     }
 
@@ -91,7 +91,7 @@ class AdaptiveScaffold extends StatelessWidget {
         deviceType == DeviceType.tablet) {
       return _MediumLayout(
         navigationRail: navigationRail,
-        child: mediumLayout!,
+        child: mediumLayout ?? _CompactLayout(child: child),
       );
     }
 
