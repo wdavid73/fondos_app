@@ -11,10 +11,10 @@ environment:
 dependencies:
   animate_do: ^4.2.0
   equatable: ^2.0.7
+  fluentui_system_icons: ^1.1.273
   flutter:
     sdk: flutter
   flutter_bloc: ^9.0.0
-
   flutter_gen: ^5.10.0
   flutter_localizations:
     sdk: flutter
@@ -60,13 +60,13 @@ flutter:
     - assets/images/
 
   fonts:
-    - family: MontserratAlternates
+    - family: Inter
       fonts:
-        - asset: assets/fonts/montserrat_alternates/MontserratAlternates-Light.ttf
-        - asset: assets/fonts/montserrat_alternates/MontserratAlternates-Regular.ttf
-        - asset: assets/fonts/montserrat_alternates/MontserratAlternates-Medium.ttf
-        - asset: assets/fonts/montserrat_alternates/MontserratAlternates-SemiBold.ttf
-        - asset: assets/fonts/montserrat_alternates/MontserratAlternates-Bold.ttf
+        - asset: assets/fonts/inter/Inter_18pt-Light.ttf
+        - asset: assets/fonts/inter/Inter_18pt-Regular.ttf
+        - asset: assets/fonts/inter/Inter_18pt-Medium.ttf
+        - asset: assets/fonts/inter/Inter_18pt-SemiBold.ttf
+        - asset: assets/fonts/inter/Inter_18pt-Bold.ttf
 
 flutter_native_splash:
   color: "#03A9F4"
