@@ -1,0 +1,75 @@
+name: Flutter CI/CD with Flavors
+
+on:
+  push:
+    branches: [master, develop, staging]
+  pull_request:
+    types: [closed]
+    branches: [master, develop, staging]
+
+jobs:
+  build:
+    if: false # 🔒 Desactivado temporalmente
+    # if: github.event.pull_request.merged == true || github.event_name == 'push'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 3.32.0
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Analyze code
+        run: flutter analyze
+
+      - name: Run tests
+        id: run_tests
+        run: flutter test
+        continue-on-error: false
+
+      # ----------- DEV FLAVOR -----------
+      - name: Build Dev APK
+        run: flutter build apk -t lib/main_dev.dart --flavor dev
+
+      - name: Upload Dev APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: dev-apk
+          path: build/app/outputs/flutter-apk/app-dev-release.apk
+
+      # ----------- STAGING FLAVOR -----------
+      - name: Build Staging APK
+        if: steps.run_tests.outcome == 'success'
+        run: flutter build apk -t lib/main_staging.dart --flavor staging
+
+      - name: Distribute Staging to Firebase
+        if: steps.run_tests.outcome == 'success'
+        uses: wzieba/Firebase-Distribution-Github-Action@v1
+        with:
+          appId: ${{ secrets.FIREBASE_APP_ID_STAGING }}
+          token: ${{ secrets.FIREBASE_AUTH_TOKEN }}
+          groups: testers
+          file: build/app/outputs/flutter-apk/app-staging-release.apk
+
+      # ----------- PROD FLAVOR (Preparado) -----------
+      - name: Build Prod APK
+        if: steps.run_tests.outcome == 'success'
+        run: flutter build apk -t lib/main_prod.dart --flavor prod
+
+      - name: Upload Prod APK
+        if: steps.run_tests.outcome == 'success'
+        uses: actions/upload-artifact@v3
+        with:
+          name: prod-apk
+          path: build/app/outputs/flutter-apk/app-prod-release.apk
+
+      # Placeholder para despliegue a Play Store (usando Fastlane)
+      # - name: [PENDING] Deploy to Google Play (Manual/CI)
+      # if: steps.run_tests.outcome == 'success'
+      # run: echo "Pending setup: Fastlane deploy to Play Store"

@@ -1,0 +1,71 @@
+name: Update App Version
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - "develop"
+
+jobs:
+  update-version:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: develop
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+
+      - name: Install bumpversion
+        run: pip install bumpversion
+
+      - name: Determine branch name
+        id: branch
+        run: echo "BRANCH_NAME=${{ github.event.pull_request.head.ref }}" >> $GITHUB_ENV
+
+      - name: Display Currrent Branch
+        run: |
+          echo "Current Branch: $BRANCH_NAME"
+        env:
+          BRANCH_NAME: ${{ env.BRANCH_NAME }}
+
+      - name: Configure Git author identity
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+      # cd ${{ github.workspace }}
+      # git checkout develop
+
+      - name: Check version based on branch
+        run: |
+          if [[ $BRANCH_NAME == feature/* ]]; then
+            echo "BUMP_LEVEL=minor" >> $GITHUB_ENV
+          elif [[ $BRANCH_NAME == release/* ]]; then
+            echo "BUMP_LEVEL=major" >> $GITHUB_ENV
+          elif [[ $BRANCH_NAME == hotfix/* || $BRANCH_NAME == bugfix/* ]]; then
+            echo "BUMP_LEVEL=patch" >> $GITHUB_ENV
+          else
+            echo "BUMP_LEVEL=none" >> $GITHUB_ENV
+          fi
+
+      - name: Update version
+        if: env.BUMP_LEVEL != 'none'
+        run: bumpversion --verbose ${{ env.BUMP_LEVEL }}
+
+      - name: Mostrar diferencias después de bumpversion
+        run: git diff
+
+      - name: List modified files
+        run: git status
+
+      - name: Commit and push changes
+        run: git push origin develop --tags || (echo "Push falló, revisa si hay reglas de verificación de commits" && exit 1)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

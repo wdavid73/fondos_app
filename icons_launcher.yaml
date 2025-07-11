@@ -1,0 +1,20 @@
+# Command to run and change launcher icon
+# dart run icons_launcher:create
+icons_launcher:
+  image_path: "assets/app-icon/app-icon.png"
+  platforms:
+    android:
+      enable: true
+      # image_path:
+      # notification_image:
+      # adaptive_background_color:
+      # adaptive_background_image:
+      # adaptive_foreground_image:
+      # adaptive_round_image:
+      # adaptive_monochrome_image:
+    ios:
+      enable: true
+      # image_path:
+      # for iOS 18+
+      # dark_path:
+      # tinted_path:

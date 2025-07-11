@@ -1,0 +1,68 @@
+name: Manual Flutter Build & Distribute
+
+on:
+  workflow_dispatch:
+    inputs:
+      flavor:
+        description: "Flavor to build"
+        required: true
+        default: "dev"
+        type: choice
+        options:
+          - dev
+          - staging
+          - prod
+
+jobs:
+  manual_build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 3.32.0
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Analyze
+        run: flutter analyze
+
+      - name: Run Tests
+        id: tests
+        run: flutter test
+
+      - name: Build APK
+        if: steps.tests.outcome == 'success' || github.event.inputs.flavor == 'dev'
+        run: flutter build apk -t lib/main_${{ github.event.inputs.flavor }}.dart --flavor ${{ github.event.inputs.flavor }}
+
+      - name: Upload Dev APK (Only)
+        if: github.event.inputs.flavor == 'dev'
+        uses: actions/upload-artifact@v3
+        with:
+          name: dev-apk
+          path: build/app/outputs/flutter-apk/app-dev-release.apk
+
+      - name: Distribute to Firebase (Staging Only)
+        if: github.event.inputs.flavor == 'staging' && steps.tests.outcome == 'success'
+        uses: wzieba/Firebase-Distribution-Github-Action@v1
+        with:
+          appId: ${{ secrets.FIREBASE_APP_ID_STAGING }}
+          token: ${{ secrets.FIREBASE_AUTH_TOKEN }}
+          groups: testers
+          file: build/app/outputs/flutter-apk/app-staging-release.apk
+
+      - name: Upload Prod APK (Only)
+        if: github.event.inputs.flavor == 'prod' && steps.tests.outcome == 'success'
+        uses: actions/upload-artifact@v3
+        with:
+          name: prod-apk
+          path: build/app/outputs/flutter-apk/app-prod-release.apk
+
+      # - name: [PENDING] Deploy to Play Store (Manual/CI)
+#        if: github.event.inputs.flavor == 'prod' && steps.tests.outcome == 'success'
+#        run: echo "Pending setup: Fastlane deploy to Play Store"

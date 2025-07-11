@@ -1,0 +1,12 @@
+{
+  "dart.flutterSdkPath": ".fvm/versions/stable",
+  "cSpell.words": ["usecase", "usecases"],
+  "[dart]": {
+    "editor.inlayHints.enabled": "on"
+  },
+  "gitHub.copilot.enable": {
+    "*": true,
+    "plaintext": true,
+    "dart": true
+  }
+}
