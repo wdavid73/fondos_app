@@ -25,6 +25,11 @@ extension AppLocalizationsX on AppLocalizations {
       'weak-password': weakPassword,
       'cancellation': cancellation,
       'subscription': subscription,
+      'is_invalid': isInvalid,
+      'is_below_minimum': isBelowMinimum,
+      'validationUserBalance': validationUserBalance,
+      'errorSubscribing': errorSubscribing,
+      'errorCancellingSubscribing': errorCancellingSubscribing,
     };
     return map[key] ?? key;
   }

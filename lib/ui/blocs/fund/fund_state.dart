@@ -5,7 +5,7 @@ enum SubscribeFundStatus { none, success, cancel, error }
 class FundState extends Equatable {
   final bool isLoading;
   final List<FundModel> funds;
-  final List<FundModel> myFunds;
+  final List<MyFundModel> myFunds;
   final List<TransactionModel> transactions;
   final String errorMessage;
   final String errorSubscribe;
@@ -34,7 +34,7 @@ class FundState extends Equatable {
   FundState copyWith({
     bool? isLoading,
     List<FundModel>? funds,
-    List<FundModel>? myFunds,
+    List<MyFundModel>? myFunds,
     List<TransactionModel>? transactions,
     String? errorMessage,
     String? errorSubscribe,

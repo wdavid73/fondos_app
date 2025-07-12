@@ -6,10 +6,16 @@ class LoadFundEvent extends FundEvent {}
 
 class SubscribeFundEvent extends FundEvent {
   final FundModel fund;
-  SubscribeFundEvent({required this.fund});
+  final String investment;
+  final NotificationWay notificationWay;
+  SubscribeFundEvent({
+    required this.fund,
+    required this.investment,
+    required this.notificationWay,
+  });
 }
 
 class CancelSubscribeFundEvent extends FundEvent {
-  final FundModel fund;
+  final MyFundModel fund;
   CancelSubscribeFundEvent({required this.fund});
 }

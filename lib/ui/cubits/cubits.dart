@@ -3,3 +3,4 @@ export 'register_form_cubit/register_form_cubit.dart';
 export 'theme_mode_cubit/theme_mode_cubit.dart';
 export 'introduction_cubit/introduction_cubit.dart';
 export 'user_cubit/user_cubit.dart';
+export 'subscribe_fund_form_cubit/subscribe_fund_form_cubit.dart';

@@ -75,5 +75,11 @@ class AppDependencyInjection {
         authBloc: getIt<AuthBloc>(),
       ),
     );
+
+    getIt.registerFactory<SubscribeFundFormCubit>(
+      () => SubscribeFundFormCubit(
+        getIt.get<FundBloc>(),
+      ),
+    );
   }
 }

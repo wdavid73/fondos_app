@@ -77,6 +77,8 @@
   "back": "Volver",
   "next": "Siguiente",
   "isRequired": "El campo es requerido",
+  "isBelowMinimum": "Es menor al mínimo",
+  "isInvalid": "El formato es invalido",
   "isEmpty": "Por favor llene el campo",
   "isEmptyList": "Por favor seleccione al menos un elemento",
   "isEmptySelect": "Por favor seleccione un elemento",
@@ -174,5 +176,11 @@
   "@next_balance": {},
   "minimum_amount": "Valor mínimo",
   "@minimum_amount": {},
-  "confirm": "Confirmar"
+  "confirm": "Confirmar",
+  "notification": "Notificación",
+  "notificationMethod": "Método de notificación",
+  "validationUserBalance": "El saldo del usuario es inferior al importe mínimo",
+  "errorSubscribing": "Error al suscribirse al fondo",
+  "errorCancellingSubscribing": "Error al cancelar la suscripción",
+  "subscriptionSuccess": "Éxito de suscripción"
 }

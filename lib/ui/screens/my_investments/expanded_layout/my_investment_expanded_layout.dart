@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_starter_kit/app/dependency_injection.dart';
 import 'package:flutter_starter_kit/config/config.dart';
-import 'package:flutter_starter_kit/data/models/fund_model.dart';
+import 'package:flutter_starter_kit/data/models/my_fund_model.dart';
 import 'package:flutter_starter_kit/ui/blocs/blocs.dart';
 import 'package:flutter_starter_kit/ui/cubits/cubits.dart';
+import 'package:flutter_starter_kit/ui/shared/notification_way.dart';
 import 'package:flutter_starter_kit/ui/shared/shared.dart';
 import 'package:flutter_starter_kit/ui/shared/styles/formats.dart';
 import 'package:flutter_starter_kit/ui/widgets/widgets.dart';
@@ -13,7 +14,7 @@ import 'package:flutter_starter_kit/ui/widgets/widgets.dart';
 class MyInvestmentExpandedLayout extends StatelessWidget {
   const MyInvestmentExpandedLayout({super.key});
 
-  void _onCancelSubscription(FundModel fund) {
+  void _onCancelSubscription(MyFundModel fund) {
     final bloc = getIt.get<FundBloc>();
     bloc.cancelSubscriptionToFund(fund);
   }
@@ -22,7 +23,7 @@ class MyInvestmentExpandedLayout extends StatelessWidget {
     if (state.status == SubscribeFundStatus.error) {
       CustomSnackBar.showSnackBar(
         context,
-        message: state.errorSubscribe,
+        message: context.l10n.getByKey(state.errorSubscribe),
         backgroundColor: ColorTheme.error,
         icon: FluentIcons.warning_24_filled,
       );
@@ -59,7 +60,7 @@ class MyInvestmentExpandedLayout extends StatelessWidget {
               style: context.textTheme.titleMedium,
             ),
             AppSpacing.md,
-            BlocSelector<FundBloc, FundState, List<FundModel>>(
+            BlocSelector<FundBloc, FundState, List<MyFundModel>>(
               bloc: getIt.get<FundBloc>(),
               selector: (state) => state.myFunds,
               builder: (context, myFunds) {
@@ -113,22 +114,54 @@ class MyInvestmentExpandedLayout extends StatelessWidget {
 }
 
 class _Table extends StatelessWidget {
-  final List<FundModel> funds;
-  final void Function(FundModel fund) onCancel;
+  final List<MyFundModel> funds;
+  final void Function(MyFundModel fund) onCancel;
   const _Table({this.funds = const [], required this.onCancel});
 
   @override
   Widget build(BuildContext context) {
+    final double fontSize = context.dp(1);
     return Container(
       width: context.width,
       constraints: BoxConstraints(maxHeight: context.hp(60)),
       child: DataTable(
         columns: [
-          DataColumn(label: Text(context.l10n.fund)),
-          DataColumn(label: Text(context.l10n.category)),
-          DataColumn(label: Text(context.l10n.investment)),
-          DataColumn(label: Text(context.l10n.status)),
-          DataColumn(label: Text(context.l10n.action)),
+          DataColumn(
+            label: Text(
+              context.l10n.fund,
+              style: context.textTheme.titleSmall?.copyWith(fontSize: fontSize),
+            ),
+          ),
+          DataColumn(
+            label: Text(
+              context.l10n.category,
+              style: context.textTheme.titleSmall?.copyWith(fontSize: fontSize),
+            ),
+          ),
+          DataColumn(
+            label: Text(
+              context.l10n.notification,
+              style: context.textTheme.titleSmall?.copyWith(fontSize: fontSize),
+            ),
+          ),
+          DataColumn(
+            label: Text(
+              context.l10n.investment,
+              style: context.textTheme.titleSmall?.copyWith(fontSize: fontSize),
+            ),
+          ),
+          DataColumn(
+            label: Text(
+              context.l10n.status,
+              style: context.textTheme.titleSmall?.copyWith(fontSize: fontSize),
+            ),
+          ),
+          DataColumn(
+            label: Text(
+              context.l10n.action,
+              style: context.textTheme.titleSmall?.copyWith(fontSize: fontSize),
+            ),
+          ),
         ],
         rows: funds.isNotEmpty
             ? funds
@@ -136,8 +169,10 @@ class _Table extends StatelessWidget {
                       cells: [
                         DataCell(Text(fund.name)),
                         DataCell(Text(fund.category)),
+                        DataCell(Text(fund.notificationWay.label)),
                         DataCell(
-                            Text("${formatNumberMillion(fund.amountMin)}")),
+                          Text("${formatNumberMillion(fund.investment)}"),
+                        ),
                         DataCell(Chip(label: Text(context.l10n.active))),
                         DataCell(
                           CustomButton(
@@ -153,6 +188,7 @@ class _Table extends StatelessWidget {
                 DataRow(
                   cells: [
                     DataCell(Text(context.l10n.noDataAvailable)),
+                    DataCell.empty,
                     DataCell.empty,
                     DataCell.empty,
                     DataCell.empty,

@@ -4,6 +4,7 @@ import 'package:flutter_starter_kit/app/dependency_injection.dart';
 import 'package:flutter_starter_kit/config/config.dart';
 import 'package:flutter_starter_kit/data/models/transaction_model.dart';
 import 'package:flutter_starter_kit/ui/blocs/blocs.dart';
+import 'package:flutter_starter_kit/ui/shared/notification_way.dart';
 import 'package:flutter_starter_kit/ui/shared/styles/formats.dart';
 import 'package:flutter_starter_kit/ui/widgets/adaptive_scaffold.dart';
 
@@ -53,23 +54,50 @@ class _Table extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double fontSize = context.dp(1);
     return Container(
       width: context.width,
       constraints: BoxConstraints(maxHeight: context.hp(60)),
       child: DataTable(
         columns: [
-          DataColumn(label: Text(context.l10n.type)),
-          DataColumn(label: Text(context.l10n.fund)),
-          DataColumn(label: Text(context.l10n.amount)),
-          DataColumn(label: Text(context.l10n.date)),
+          DataColumn(
+            label: Text(
+              context.l10n.type,
+              style: context.textTheme.titleSmall?.copyWith(fontSize: fontSize),
+            ),
+          ),
+          DataColumn(
+            label: Text(
+              context.l10n.fund,
+              style: context.textTheme.titleSmall?.copyWith(fontSize: fontSize),
+            ),
+          ),
+          DataColumn(
+            label: Text(
+              context.l10n.notification,
+              style: context.textTheme.titleSmall?.copyWith(fontSize: fontSize),
+            ),
+          ),
+          DataColumn(
+            label: Text(
+              context.l10n.amount,
+              style: context.textTheme.titleSmall?.copyWith(fontSize: fontSize),
+            ),
+          ),
+          DataColumn(
+            label: Text(
+              context.l10n.date,
+              style: context.textTheme.titleSmall?.copyWith(fontSize: fontSize),
+            ),
+          ),
         ],
         rows: transactions.isNotEmpty
             ? transactions
                 .map((e) => DataRow(cells: [
                       DataCell(Text("${context.l10n.getByKey(e.type)}")),
                       DataCell(Text(e.fund.name)),
-                      DataCell(
-                          Text("${formatNumberMillion(e.fund.amountMin)}")),
+                      DataCell(Text(e.notificationWay?.label ?? 'No Data')),
+                      DataCell(Text("${formatNumberMillion(e.amount)}")),
                       DataCell(Text(e.date.toString())),
                     ]))
                 .toList()
@@ -77,6 +105,7 @@ class _Table extends StatelessWidget {
                 DataRow(
                   cells: [
                     DataCell(Text(context.l10n.noDataAvailable)),
+                    DataCell.empty,
                     DataCell.empty,
                     DataCell.empty,
                     DataCell.empty,

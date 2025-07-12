@@ -11,3 +11,5 @@ export 'select.dart';
 export 'multi_select.dart';
 export 'checkbox.dart';
 export 'radio_button.dart';
+export 'amount_input.dart';
+export 'generic_option_input.dart';

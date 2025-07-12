@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 /// A customizable text form field widget.
 ///
@@ -62,6 +63,10 @@ class CustomTextFormField extends StatelessWidget {
 
   final Key? textFormFieldKey;
 
+  final String? prefixText;
+
+  final List<TextInputFormatter>? inputFormatters;
+
   /// Creates a [CustomTextFormField].
   const CustomTextFormField({
     super.key,
@@ -84,6 +89,8 @@ class CustomTextFormField extends StatelessWidget {
     this.initialValue,
     this.helperText,
     this.textFormFieldKey,
+    this.prefixText,
+    this.inputFormatters,
   });
 
   /// Returns true if the text field is a password field.
@@ -105,12 +112,14 @@ class CustomTextFormField extends StatelessWidget {
         enabled: enabled,
         autofillHints: autofillHints,
         initialValue: initialValue,
+        inputFormatters: inputFormatters,
         decoration: InputDecoration(
           labelText: label,
           hintText: hint,
           errorText: errorMessage != '' ? errorMessage : null,
           helperText: helperText,
           prefixIcon: prefixIcon,
+          prefixText: prefixText,
           suffixIcon: hasObscure
               ? IconButton(
                   onPressed:

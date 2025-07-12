@@ -78,7 +78,7 @@ List<GoRoute> routes = [
   ),
 ];
 
-CustomTransitionPage<void> _transitionPage({
+/* CustomTransitionPage<void> _transitionPage({
   required Widget child,
   TransitionType? transitionType,
 }) =>
@@ -86,3 +86,4 @@ CustomTransitionPage<void> _transitionPage({
       child,
       transitionType,
     );
+ */

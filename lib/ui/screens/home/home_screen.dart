@@ -30,11 +30,10 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _listener(BuildContext context, FundState state) {
-    debugPrint("${state.status}");
     if (state.status == SubscribeFundStatus.error) {
       CustomSnackBar.showSnackBar(
         context,
-        message: state.errorSubscribe,
+        message: context.l10n.getByKey(state.errorSubscribe),
         backgroundColor: ColorTheme.error,
         icon: FluentIcons.warning_24_filled,
       );
@@ -42,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
     if (state.status == SubscribeFundStatus.success) {
       CustomSnackBar.showSnackBar(
         context,
-        message: "Subscription success",
+        message: context.l10n.subscriptionSuccess,
         backgroundColor: ColorTheme.success,
         icon: FluentIcons.checkmark_24_filled,
       );

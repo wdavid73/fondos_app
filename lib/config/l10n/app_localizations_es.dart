@@ -251,6 +251,12 @@ class AppLocalizationsEs extends AppLocalizations {
   String get isRequired => 'El campo es requerido';
 
   @override
+  String get isInvalid => 'El formato es invalido';
+
+  @override
+  String get isBelowMinimum => 'Es menor al mínimo';
+
+  @override
   String get isEmpty => 'Por favor llene el campo';
 
   @override
@@ -539,4 +545,23 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get confirm => 'Confirmar';
+
+  @override
+  String get notification => 'Notificación';
+
+  @override
+  String get notificationMethod => 'Método de notificación';
+
+  @override
+  String get validationUserBalance =>
+      'El saldo del usuario es inferior al importe mínimo';
+
+  @override
+  String get errorSubscribing => 'Error al suscribirse al fondo';
+
+  @override
+  String get errorCancellingSubscribing => 'Error al cancelar la suscripción';
+
+  @override
+  String get subscriptionSuccess => 'Éxito de suscripción';
 }

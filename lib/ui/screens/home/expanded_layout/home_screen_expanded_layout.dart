@@ -3,11 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_starter_kit/app/dependency_injection.dart';
 import 'package:flutter_starter_kit/config/config.dart';
 import 'package:flutter_starter_kit/data/models/fund_model.dart';
+import 'package:flutter_starter_kit/data/models/my_fund_model.dart';
 import 'package:flutter_starter_kit/ui/blocs/fund/fund_bloc.dart';
+import 'package:flutter_starter_kit/ui/cubits/cubits.dart';
 import 'package:flutter_starter_kit/ui/screens/home/widgets/dialog_subscribe_to_fund.dart';
 import 'package:flutter_starter_kit/ui/shared/styles/app_spacing.dart';
 import 'package:flutter_starter_kit/ui/widgets/svg_picture_custom.dart';
-import 'package:go_router/go_router.dart';
 
 import '../widgets/fund_item.dart';
 
@@ -18,17 +19,22 @@ class HomeScreenExpandedLayout extends StatelessWidget {
     showDialog(
       context: context,
       useSafeArea: true,
-      builder: (ctx) {
-        return DialogSubscribeToFund(
-          fund: fund,
-          onConfirm: () {
-            context.pop();
-            final bloc = getIt.get<FundBloc>();
-            bloc.subscribeToFund(fund);
-          },
+      builder: (_) {
+        return MultiBlocProvider(
+          providers: [
+            BlocProvider(create: (__) => getIt.get<SubscribeFundFormCubit>())
+          ],
+          child: DialogSubscribeToFund(
+            fund: fund,
+          ),
         );
       },
     );
+  }
+
+  bool hasDuplicateId(List<FundModel> listA, List<MyFundModel> listB) {
+    final idsA = listA.map((a) => a.id).toSet();
+    return listB.any((b) => idsA.contains(b.id));
   }
 
   @override
@@ -79,14 +85,17 @@ class HomeScreenExpandedLayout extends StatelessWidget {
                   );
                 }
 
+                final myFundsId = state.myFunds.map((f) => f.id).toSet();
+
                 return ListView.separated(
                   itemCount: state.funds.length,
                   itemBuilder: (context, index) {
                     final FundModel fund = state.funds[index];
+                    bool isEnabled = !myFundsId.contains(fund.id);
 
                     return FundItem(
                       fund: fund,
-                      enable: !state.myFunds.contains(fund),
+                      enable: isEnabled,
                       onSubscribe: (FundModel fund) {
                         _showDialog(context, fund);
                       },

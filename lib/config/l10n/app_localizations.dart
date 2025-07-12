@@ -560,6 +560,18 @@ abstract class AppLocalizations {
   /// **'This field is required'**
   String get isRequired;
 
+  /// No description provided for @isInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Format is invalid'**
+  String get isInvalid;
+
+  /// No description provided for @isBelowMinimum.
+  ///
+  /// In en, this message translates to:
+  /// **'Is below the minimum'**
+  String get isBelowMinimum;
+
   /// No description provided for @isEmpty.
   ///
   /// In en, this message translates to:
@@ -1081,6 +1093,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Confirm'**
   String get confirm;
+
+  /// No description provided for @notification.
+  ///
+  /// In en, this message translates to:
+  /// **'Notification'**
+  String get notification;
+
+  /// No description provided for @notificationMethod.
+  ///
+  /// In en, this message translates to:
+  /// **'Notification method'**
+  String get notificationMethod;
+
+  /// No description provided for @validationUserBalance.
+  ///
+  /// In en, this message translates to:
+  /// **'The user\'s balance is less than the minimum amount'**
+  String get validationUserBalance;
+
+  /// No description provided for @errorSubscribing.
+  ///
+  /// In en, this message translates to:
+  /// **'Error Subscribing to fund'**
+  String get errorSubscribing;
+
+  /// No description provided for @errorCancellingSubscribing.
+  ///
+  /// In en, this message translates to:
+  /// **'Error cancelling subscription'**
+  String get errorCancellingSubscribing;
+
+  /// No description provided for @subscriptionSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Subscription success'**
+  String get subscriptionSuccess;
 }
 
 class _AppLocalizationsDelegate

@@ -7,6 +7,7 @@ export 'custom_range_date_picker_field.dart';
 export 'custom_switch.dart';
 export 'custom_drawer_header.dart';
 export 'custom_button.dart';
+export 'custom_radio_group_field.dart';
 export 'svg_picture_custom.dart';
 
 export 'adaptive_scaffold.dart';
