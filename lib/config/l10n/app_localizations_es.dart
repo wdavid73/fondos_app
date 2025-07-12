@@ -223,8 +223,7 @@ class AppLocalizationsEs extends AppLocalizations {
       'Se ha producido un error desconocido al procesar la solicitud.';
 
   @override
-  String get cancel =>
-      'La solicitud ha sido cancelada manualmente por el usuario.';
+  String get cancel => 'Cancel';
 
   @override
   String get notInternet =>
@@ -480,4 +479,64 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get totalBalance => 'Balance total';
+
+  @override
+  String get currentBalance => 'Balance actual:';
+
+  @override
+  String get noDataAvailable => 'Sin datos disponibles';
+
+  @override
+  String get cancellation => 'Cancelación';
+
+  @override
+  String get subscription => 'Suscripción';
+
+  @override
+  String get type => 'Tipo';
+
+  @override
+  String get fund => 'Fondo';
+
+  @override
+  String get amount => 'Valor';
+
+  @override
+  String get date => 'Fecha';
+
+  @override
+  String get subscriptionCancelSuccess => 'Subscription cancelada exitosamente';
+
+  @override
+  String get category => 'Categoría';
+
+  @override
+  String get investment => 'Inversion';
+
+  @override
+  String get status => 'Estado';
+
+  @override
+  String get action => 'Acción';
+
+  @override
+  String get active => 'Activo';
+
+  @override
+  String get minimum => 'Mínimo';
+
+  @override
+  String get invest_in => 'Invierte en';
+
+  @override
+  String get your_balance => 'Balance actual';
+
+  @override
+  String get next_balance => 'Siguiente balance';
+
+  @override
+  String get minimum_amount => 'Valor mínimo';
+
+  @override
+  String get confirm => 'Confirmar';
 }

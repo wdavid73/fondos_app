@@ -221,7 +221,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'An unknown error occurred while processing the request.';
 
   @override
-  String get cancel => 'The request was manually cancelled by the user.';
+  String get cancel => 'Cancel';
 
   @override
   String get notInternet =>
@@ -469,4 +469,64 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get totalBalance => 'Total Balance';
+
+  @override
+  String get currentBalance => 'Current Balance:';
+
+  @override
+  String get noDataAvailable => 'No data available';
+
+  @override
+  String get cancellation => 'Cancellation';
+
+  @override
+  String get subscription => 'Subscription';
+
+  @override
+  String get type => 'Type';
+
+  @override
+  String get fund => 'Fund';
+
+  @override
+  String get amount => 'Amount';
+
+  @override
+  String get date => 'Date';
+
+  @override
+  String get subscriptionCancelSuccess => 'Subscription cancel success';
+
+  @override
+  String get category => 'Category';
+
+  @override
+  String get investment => 'Investment';
+
+  @override
+  String get status => 'Status';
+
+  @override
+  String get action => 'Action';
+
+  @override
+  String get active => 'Active';
+
+  @override
+  String get minimum => 'Minimum';
+
+  @override
+  String get invest_in => 'Invest in';
+
+  @override
+  String get your_balance => 'Your balance';
+
+  @override
+  String get next_balance => 'Next balance';
+
+  @override
+  String get minimum_amount => 'Minimum amount';
+
+  @override
+  String get confirm => 'Confirm';
 }
