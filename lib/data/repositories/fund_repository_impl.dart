@@ -1,6 +1,6 @@
-import 'package:flutter_starter_kit/data/models/fund_model.dart';
-import 'package:flutter_starter_kit/domain/datasources/fund_datasource.dart';
-import 'package:flutter_starter_kit/domain/repositories/fund_repository.dart';
+import 'package:fondos_app/data/models/fund_model.dart';
+import 'package:fondos_app/domain/datasources/fund_datasource.dart';
+import 'package:fondos_app/domain/repositories/fund_repository.dart';
 
 class FundRepositoryImpl implements FundRepository {
   final FundDataSource _dataSource;

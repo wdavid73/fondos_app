@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:flutter_starter_kit/config/config.dart';
+import 'package:fondos_app/config/config.dart';
 
 // Extension for BuildContext to get screen width easily
 // If you already have a similar extension, you can use that.

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_starter_kit/config/theme/utils/responsive.dart';
+import 'package:fondos_app/config/theme/utils/responsive.dart';
 
 /// An extension on [BuildContext] that provides easy access to the current
 /// [TextTheme].

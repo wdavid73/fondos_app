@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_starter_kit/config/config.dart';
-import 'package:flutter_starter_kit/config/theme/widget_themes/widget_themes.dart';
+import 'package:fondos_app/config/config.dart';
+import 'package:fondos_app/config/theme/widget_themes/widget_themes.dart';
 
 /// A utility class that centralizes all constant values and base theme data
 /// used across both light and dark themes in the application.

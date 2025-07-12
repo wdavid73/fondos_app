@@ -1,5 +1,5 @@
-import 'package:flutter_starter_kit/domain/datasources/auth_datasource.dart';
-import 'package:flutter_starter_kit/domain/repositories/auth_repository.dart';
+import 'package:fondos_app/domain/datasources/auth_datasource.dart';
+import 'package:fondos_app/domain/repositories/auth_repository.dart';
 
 /// Implementation of [AuthRepository] that interacts with an authentication data source.
 ///

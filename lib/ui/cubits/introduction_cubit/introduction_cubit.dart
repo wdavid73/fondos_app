@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_starter_kit/ui/shared/service/service.dart';
+import 'package:fondos_app/ui/shared/service/service.dart';
 
 part 'introduction_state.dart';
 

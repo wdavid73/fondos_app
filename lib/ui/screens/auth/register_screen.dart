@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_starter_kit/config/config.dart';
-import 'package:flutter_starter_kit/ui/views/views.dart';
+import 'package:fondos_app/config/config.dart';
+import 'package:fondos_app/ui/views/views.dart';
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({super.key});

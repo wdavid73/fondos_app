@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
-import 'package:flutter_starter_kit/data/models/fund_model.dart';
-import 'package:flutter_starter_kit/domain/datasources/fund_datasource.dart';
+import 'package:fondos_app/data/models/fund_model.dart';
+import 'package:fondos_app/domain/datasources/fund_datasource.dart';
 
 class MockFundDataSource implements FundDataSource {
   @override

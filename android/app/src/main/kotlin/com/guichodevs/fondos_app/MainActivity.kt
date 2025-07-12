@@ -1,4 +1,4 @@
-package com.guichodevs.flutterstaterkit
+package com.guichodevs.fondos_app
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,5 +1,5 @@
-import 'package:flutter_starter_kit/data/models/fund_model.dart';
-import 'package:flutter_starter_kit/ui/shared/notification_way.dart';
+import 'package:fondos_app/data/models/fund_model.dart';
+import 'package:fondos_app/ui/shared/notification_way.dart';
 
 class MyFundModel extends FundModel {
   final String investment;

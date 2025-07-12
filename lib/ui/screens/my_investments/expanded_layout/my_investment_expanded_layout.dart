@@ -1,15 +1,15 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_starter_kit/app/dependency_injection.dart';
-import 'package:flutter_starter_kit/config/config.dart';
-import 'package:flutter_starter_kit/data/models/my_fund_model.dart';
-import 'package:flutter_starter_kit/ui/blocs/blocs.dart';
-import 'package:flutter_starter_kit/ui/cubits/cubits.dart';
-import 'package:flutter_starter_kit/ui/shared/notification_way.dart';
-import 'package:flutter_starter_kit/ui/shared/shared.dart';
-import 'package:flutter_starter_kit/ui/shared/styles/formats.dart';
-import 'package:flutter_starter_kit/ui/widgets/widgets.dart';
+import 'package:fondos_app/app/dependency_injection.dart';
+import 'package:fondos_app/config/config.dart';
+import 'package:fondos_app/data/models/my_fund_model.dart';
+import 'package:fondos_app/ui/blocs/blocs.dart';
+import 'package:fondos_app/ui/cubits/cubits.dart';
+import 'package:fondos_app/ui/shared/notification_way.dart';
+import 'package:fondos_app/ui/shared/shared.dart';
+import 'package:fondos_app/ui/shared/styles/formats.dart';
+import 'package:fondos_app/ui/widgets/widgets.dart';
 
 class MyInvestmentExpandedLayout extends StatelessWidget {
   const MyInvestmentExpandedLayout({super.key});

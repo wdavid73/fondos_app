@@ -1,10 +1,10 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_starter_kit/data/models/fund_model.dart';
-import 'package:flutter_starter_kit/ui/blocs/fund/fund_bloc.dart';
-import 'package:flutter_starter_kit/ui/shared/notification_way.dart';
-import 'package:flutter_starter_kit/ui/shared/inputs/inputs.dart';
-import 'package:flutter_starter_kit/utils/utils.dart';
+import 'package:fondos_app/data/models/fund_model.dart';
+import 'package:fondos_app/ui/blocs/fund/fund_bloc.dart';
+import 'package:fondos_app/ui/shared/notification_way.dart';
+import 'package:fondos_app/ui/shared/inputs/inputs.dart';
+import 'package:fondos_app/utils/utils.dart';
 import 'package:formz/formz.dart';
 
 part 'subscribe_fund_form_state.dart';

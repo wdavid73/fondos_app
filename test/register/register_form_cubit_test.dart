@@ -1,8 +1,8 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_starter_kit/ui/blocs/auth/auth_bloc.dart';
-import 'package:flutter_starter_kit/ui/cubits/cubits.dart';
-import 'package:flutter_starter_kit/ui/shared/inputs/inputs.dart';
+import 'package:fondos_app/ui/blocs/auth/auth_bloc.dart';
+import 'package:fondos_app/ui/cubits/cubits.dart';
+import 'package:fondos_app/ui/shared/inputs/inputs.dart';
 import 'package:mocktail/mocktail.dart';
 
 import 'mocks/mock_register_dependencies.dart';

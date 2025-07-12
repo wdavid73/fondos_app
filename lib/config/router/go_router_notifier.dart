@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/widgets.dart';
-import 'package:flutter_starter_kit/ui/blocs/blocs.dart';
+import 'package:fondos_app/ui/blocs/blocs.dart';
 
 /// A [ChangeNotifier] that listens to changes in the authentication state and
 /// notifies its listeners when the state changes.

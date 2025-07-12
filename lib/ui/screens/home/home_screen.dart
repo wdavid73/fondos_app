@@ -1,14 +1,14 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_starter_kit/app/dependency_injection.dart';
-import 'package:flutter_starter_kit/ui/blocs/blocs.dart';
-import 'package:flutter_starter_kit/ui/widgets/widgets.dart';
+import 'package:fondos_app/app/dependency_injection.dart';
+import 'package:fondos_app/ui/blocs/blocs.dart';
+import 'package:fondos_app/ui/widgets/widgets.dart';
 
-import 'package:flutter_starter_kit/config/config.dart';
-import 'package:flutter_starter_kit/ui/shared/shared.dart';
-import 'package:flutter_starter_kit/ui/screens/home/expanded_layout/home_screen_expanded_layout.dart';
-import 'package:flutter_starter_kit/ui/screens/home/medium_layout/home_screen_medium_layout.dart';
+import 'package:fondos_app/config/config.dart';
+import 'package:fondos_app/ui/shared/shared.dart';
+import 'package:fondos_app/ui/screens/home/expanded_layout/home_screen_expanded_layout.dart';
+import 'package:fondos_app/ui/screens/home/medium_layout/home_screen_medium_layout.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

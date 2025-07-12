@@ -4,15 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:formz/formz.dart';
-import 'package:flutter_starter_kit/data/data.dart';
+import 'package:fondos_app/data/data.dart';
 import 'package:go_router/go_router.dart';
 import 'package:integration_test/integration_test.dart';
 
-import 'package:flutter_starter_kit/config/config.dart';
-import 'package:flutter_starter_kit/ui/cubits/cubits.dart';
-import 'package:flutter_starter_kit/ui/screens/screens.dart';
-import 'package:flutter_starter_kit/ui/shared/inputs/inputs.dart';
-import 'package:flutter_starter_kit/ui/blocs/blocs.dart';
+import 'package:fondos_app/config/config.dart';
+import 'package:fondos_app/ui/cubits/cubits.dart';
+import 'package:fondos_app/ui/screens/screens.dart';
+import 'package:fondos_app/ui/shared/inputs/inputs.dart';
+import 'package:fondos_app/ui/blocs/blocs.dart';
 import 'package:mocktail/mocktail.dart';
 
 import 'mocks/auth_flow_dependencies.dart';

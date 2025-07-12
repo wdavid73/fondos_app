@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_starter_kit/ui/widgets/shared_app_bar.dart';
+import 'package:fondos_app/ui/widgets/shared_app_bar.dart';
 import 'package:go_router/go_router.dart';
-import 'package:flutter_starter_kit/ui/screens/screens.dart';
+import 'package:fondos_app/ui/screens/screens.dart';
 import 'routes_constants.dart';
 import 'routes_transitions.dart';
 

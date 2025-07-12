@@ -1,11 +1,11 @@
-import 'package:flutter_starter_kit/data/data.dart';
-import 'package:flutter_starter_kit/data/datasources/mock_fund_datasource.dart';
-import 'package:flutter_starter_kit/data/repositories/fund_repository_impl.dart';
-import 'package:flutter_starter_kit/domain/repositories/repositories.dart';
-import 'package:flutter_starter_kit/domain/usecases/usecases.dart';
-import 'package:flutter_starter_kit/ui/blocs/blocs.dart';
-import 'package:flutter_starter_kit/ui/cubits/cubits.dart';
-import 'package:flutter_starter_kit/ui/shared/service/service.dart';
+import 'package:fondos_app/data/data.dart';
+import 'package:fondos_app/data/datasources/mock_fund_datasource.dart';
+import 'package:fondos_app/data/repositories/fund_repository_impl.dart';
+import 'package:fondos_app/domain/repositories/repositories.dart';
+import 'package:fondos_app/domain/usecases/usecases.dart';
+import 'package:fondos_app/ui/blocs/blocs.dart';
+import 'package:fondos_app/ui/cubits/cubits.dart';
+import 'package:fondos_app/ui/shared/service/service.dart';
 import 'package:get_it/get_it.dart';
 
 final GetIt getIt = GetIt.instance;

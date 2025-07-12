@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_starter_kit/config/theme/theme.dart';
+import 'package:fondos_app/config/theme/theme.dart';
 
 class AppSpacing {
   static const Widget xs = SizedBox(height: 4, width: 4);

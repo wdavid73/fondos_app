@@ -1,11 +1,11 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_starter_kit/data/models/fund_model.dart';
-import 'package:flutter_starter_kit/data/models/my_fund_model.dart';
-import 'package:flutter_starter_kit/data/models/transaction_model.dart';
-import 'package:flutter_starter_kit/domain/usecases/fund_usecase.dart';
-import 'package:flutter_starter_kit/ui/cubits/cubits.dart';
-import 'package:flutter_starter_kit/ui/shared/notification_way.dart';
+import 'package:fondos_app/data/models/fund_model.dart';
+import 'package:fondos_app/data/models/my_fund_model.dart';
+import 'package:fondos_app/data/models/transaction_model.dart';
+import 'package:fondos_app/domain/usecases/fund_usecase.dart';
+import 'package:fondos_app/ui/cubits/cubits.dart';
+import 'package:fondos_app/ui/shared/notification_way.dart';
 
 part 'fund_event.dart';
 part 'fund_state.dart';

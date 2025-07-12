@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_starter_kit/config/config.dart';
-import 'package:flutter_starter_kit/ui/shared/styles/app_spacing.dart';
+import 'package:fondos_app/config/config.dart';
+import 'package:fondos_app/ui/shared/styles/app_spacing.dart';
 
 /// A reusable radio button selector for any data type [T].
 ///

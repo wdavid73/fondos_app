@@ -1,6 +1,6 @@
-import 'package:flutter_starter_kit/data/mappers/fund_mapper.dart';
-import 'package:flutter_starter_kit/data/models/json_serializable.dart';
-import 'package:flutter_starter_kit/domain/entities/fund_entity.dart';
+import 'package:fondos_app/data/mappers/fund_mapper.dart';
+import 'package:fondos_app/data/models/json_serializable.dart';
+import 'package:fondos_app/domain/entities/fund_entity.dart';
 
 class FundModel extends FundEntity implements JsonSerializable {
   FundModel({

@@ -1,4 +1,4 @@
-import 'package:flutter_starter_kit/domain/entities/base_entity.dart';
+import 'package:fondos_app/domain/entities/base_entity.dart';
 
 class FundEntity extends BaseEntity {
   @override

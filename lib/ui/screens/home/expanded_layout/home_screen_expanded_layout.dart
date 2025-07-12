@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_starter_kit/app/dependency_injection.dart';
-import 'package:flutter_starter_kit/config/config.dart';
-import 'package:flutter_starter_kit/data/models/fund_model.dart';
-import 'package:flutter_starter_kit/data/models/my_fund_model.dart';
-import 'package:flutter_starter_kit/ui/blocs/fund/fund_bloc.dart';
-import 'package:flutter_starter_kit/ui/cubits/cubits.dart';
-import 'package:flutter_starter_kit/ui/screens/home/widgets/dialog_subscribe_to_fund.dart';
-import 'package:flutter_starter_kit/ui/shared/styles/app_spacing.dart';
-import 'package:flutter_starter_kit/ui/widgets/svg_picture_custom.dart';
+import 'package:fondos_app/app/dependency_injection.dart';
+import 'package:fondos_app/config/config.dart';
+import 'package:fondos_app/data/models/fund_model.dart';
+import 'package:fondos_app/data/models/my_fund_model.dart';
+import 'package:fondos_app/ui/blocs/fund/fund_bloc.dart';
+import 'package:fondos_app/ui/cubits/cubits.dart';
+import 'package:fondos_app/ui/screens/home/widgets/dialog_subscribe_to_fund.dart';
+import 'package:fondos_app/ui/shared/styles/app_spacing.dart';
+import 'package:fondos_app/ui/widgets/svg_picture_custom.dart';
 
 import '../widgets/fund_item.dart';
 

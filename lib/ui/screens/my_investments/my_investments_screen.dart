@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_starter_kit/ui/screens/my_investments/expanded_layout/my_investment_expanded_layout.dart';
-import 'package:flutter_starter_kit/ui/widgets/adaptive_scaffold.dart';
+import 'package:fondos_app/ui/screens/my_investments/expanded_layout/my_investment_expanded_layout.dart';
+import 'package:fondos_app/ui/widgets/adaptive_scaffold.dart';
 
 class MyInvestmentsScreen extends StatelessWidget {
   const MyInvestmentsScreen({super.key});

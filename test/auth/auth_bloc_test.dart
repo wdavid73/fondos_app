@@ -1,6 +1,6 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_starter_kit/ui/blocs/auth/auth_bloc.dart';
+import 'package:fondos_app/ui/blocs/auth/auth_bloc.dart';
 import 'package:mocktail/mocktail.dart';
 
 import 'mocks/mock_auth_bloc_dependencies.dart';

@@ -1,4 +1,4 @@
-import 'package:flutter_starter_kit/data/models/fund_model.dart';
+import 'package:fondos_app/data/models/fund_model.dart';
 
 class FundMapper {
   static FundModel fundJsonToModel(Map<String, dynamic> json) => FundModel(

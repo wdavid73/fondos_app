@@ -1,5 +1,5 @@
-import 'package:flutter_starter_kit/data/data.dart';
-import 'package:flutter_starter_kit/domain/datasources/auth_datasource.dart';
+import 'package:fondos_app/data/data.dart';
+import 'package:fondos_app/domain/datasources/auth_datasource.dart';
 
 /// Example JSON response for login and checkAuthStatus:
 ///

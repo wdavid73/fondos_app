@@ -1,9 +1,9 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_starter_kit/config/config.dart';
-import 'package:flutter_starter_kit/data/models/fund_model.dart';
-import 'package:flutter_starter_kit/ui/shared/styles/formats.dart';
-import 'package:flutter_starter_kit/ui/widgets/widgets.dart';
+import 'package:fondos_app/config/config.dart';
+import 'package:fondos_app/data/models/fund_model.dart';
+import 'package:fondos_app/ui/shared/styles/formats.dart';
+import 'package:fondos_app/ui/widgets/widgets.dart';
 
 class FundItem extends StatelessWidget {
   final FundModel fund;

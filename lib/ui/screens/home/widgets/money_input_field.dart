@@ -1,7 +1,7 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_starter_kit/ui/widgets/custom_text_form_field.dart';
+import 'package:fondos_app/ui/widgets/custom_text_form_field.dart';
 import 'package:intl/intl.dart';
 
 class MoneyInputField extends StatefulWidget {

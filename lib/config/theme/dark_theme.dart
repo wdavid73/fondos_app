@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_starter_kit/config/config.dart';
-import 'package:flutter_starter_kit/config/theme/theme_constants.dart';
+import 'package:fondos_app/config/config.dart';
+import 'package:fondos_app/config/theme/theme_constants.dart';
 
 import './widget_themes/widget_themes.dart';
 

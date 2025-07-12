@@ -1,6 +1,6 @@
-import 'package:flutter_starter_kit/config/config.dart';
+import 'package:fondos_app/config/config.dart';
 import 'package:go_router/go_router.dart';
-import 'package:flutter_starter_kit/ui/blocs/blocs.dart';
+import 'package:fondos_app/ui/blocs/blocs.dart';
 import 'go_router_notifier.dart';
 import 'redirect_handler.dart';
 import 'routes_generator.dart';

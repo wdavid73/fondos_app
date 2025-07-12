@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_starter_kit/app/dependency_injection.dart';
-import 'package:flutter_starter_kit/config/config.dart';
-import 'package:flutter_starter_kit/data/models/transaction_model.dart';
-import 'package:flutter_starter_kit/ui/blocs/blocs.dart';
-import 'package:flutter_starter_kit/ui/shared/notification_way.dart';
-import 'package:flutter_starter_kit/ui/shared/styles/formats.dart';
-import 'package:flutter_starter_kit/ui/widgets/adaptive_scaffold.dart';
+import 'package:fondos_app/app/dependency_injection.dart';
+import 'package:fondos_app/config/config.dart';
+import 'package:fondos_app/data/models/transaction_model.dart';
+import 'package:fondos_app/ui/blocs/blocs.dart';
+import 'package:fondos_app/ui/shared/notification_way.dart';
+import 'package:fondos_app/ui/shared/styles/formats.dart';
+import 'package:fondos_app/ui/widgets/adaptive_scaffold.dart';
 
 class TransactionsScreen extends StatelessWidget {
   const TransactionsScreen({super.key});

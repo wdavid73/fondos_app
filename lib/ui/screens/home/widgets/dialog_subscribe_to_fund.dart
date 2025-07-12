@@ -1,17 +1,17 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_starter_kit/app/dependency_injection.dart';
-import 'package:flutter_starter_kit/config/config.dart';
-import 'package:flutter_starter_kit/data/models/fund_model.dart';
-import 'package:flutter_starter_kit/ui/blocs/blocs.dart';
-import 'package:flutter_starter_kit/ui/cubits/cubits.dart';
-import 'package:flutter_starter_kit/ui/screens/home/widgets/money_input_field.dart';
-import 'package:flutter_starter_kit/ui/shared/notification_way.dart';
-import 'package:flutter_starter_kit/ui/shared/shared.dart';
-import 'package:flutter_starter_kit/ui/shared/styles/formats.dart';
-import 'package:flutter_starter_kit/ui/widgets/custom_button.dart';
-import 'package:flutter_starter_kit/ui/widgets/custom_radio_group_field.dart';
+import 'package:fondos_app/app/dependency_injection.dart';
+import 'package:fondos_app/config/config.dart';
+import 'package:fondos_app/data/models/fund_model.dart';
+import 'package:fondos_app/ui/blocs/blocs.dart';
+import 'package:fondos_app/ui/cubits/cubits.dart';
+import 'package:fondos_app/ui/screens/home/widgets/money_input_field.dart';
+import 'package:fondos_app/ui/shared/notification_way.dart';
+import 'package:fondos_app/ui/shared/shared.dart';
+import 'package:fondos_app/ui/shared/styles/formats.dart';
+import 'package:fondos_app/ui/widgets/custom_button.dart';
+import 'package:fondos_app/ui/widgets/custom_radio_group_field.dart';
 import 'package:go_router/go_router.dart';
 
 double userBalance = getIt.get<UserCubit>().state.balance;
