@@ -1,4 +1,4 @@
-# Flutter Starter Kit
+# Fondos App
 
 A Flutter template project with essential configurations and packages to quickly start new projects.
 
