@@ -23,6 +23,8 @@ extension AppLocalizationsX on AppLocalizations {
       'wrong-password': wrongPassword,
       'invalid-email': invalidEmail,
       'weak-password': weakPassword,
+      'cancellation': cancellation,
+      'subscription': subscription,
     };
     return map[key] ?? key;
   }

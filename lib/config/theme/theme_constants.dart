@@ -405,7 +405,7 @@ class ThemeConstants {
       borderRadius: BorderRadius.circular(20),
     ),
     menuPadding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
-    color: ColorTheme.lightPrimaryColor,
+    color: ColorTheme.navigationBackgroundColorLight,
     position: PopupMenuPosition.over,
   );
 

@@ -1,3 +1,4 @@
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_starter_kit/app/dependency_injection.dart';
@@ -28,28 +29,52 @@ class _HomeScreenState extends State<HomeScreen> {
     bloc.loadFunds();
   }
 
+  void _listener(BuildContext context, FundState state) {
+    debugPrint("${state.status}");
+    if (state.status == SubscribeFundStatus.error) {
+      CustomSnackBar.showSnackBar(
+        context,
+        message: state.errorSubscribe,
+        backgroundColor: ColorTheme.error,
+        icon: FluentIcons.warning_24_filled,
+      );
+    }
+    if (state.status == SubscribeFundStatus.success) {
+      CustomSnackBar.showSnackBar(
+        context,
+        message: "Subscription success",
+        backgroundColor: ColorTheme.success,
+        icon: FluentIcons.checkmark_24_filled,
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return WrapperBlocs(
-      child: AdaptiveScaffold(
-        expandedLayout: HomeScreenExpandedLayout(),
-        mediumLayout: HomeScreenMediumLayout(),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Center(
-              child: FlutterLogo(
-                size: context.dp(30),
+      child: BlocListener<FundBloc, FundState>(
+        bloc: getIt.get<FundBloc>(),
+        listener: _listener,
+        child: AdaptiveScaffold(
+          expandedLayout: HomeScreenExpandedLayout(),
+          mediumLayout: HomeScreenMediumLayout(),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Center(
+                child: FlutterLogo(
+                  size: context.dp(30),
+                ),
               ),
-            ),
-            AppSpacing.md,
-            Text(
-              key: Key("home_title"),
-              context.l10n.appName,
-              style: context.textTheme.titleLarge,
-            ),
-          ],
+              AppSpacing.md,
+              Text(
+                key: Key("home_title"),
+                context.l10n.appName,
+                style: context.textTheme.titleLarge,
+              ),
+            ],
+          ),
         ),
       ),
     );

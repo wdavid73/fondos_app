@@ -7,7 +7,14 @@ import 'package:flutter_starter_kit/ui/widgets/widgets.dart';
 
 class FundItem extends StatelessWidget {
   final FundModel fund;
-  const FundItem({super.key, required this.fund});
+  final void Function(FundModel fund) onSubscribe;
+  final bool enable;
+  const FundItem({
+    super.key,
+    required this.fund,
+    required this.onSubscribe,
+    this.enable = true,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -22,13 +29,13 @@ class FundItem extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Text(
-            "Minimum: ${formatNumberMillion(fund.amountMin)}",
+            "${context.l10n.minimum}: ${formatNumberMillion(fund.amountMin)}",
             style: context.textTheme.bodyMedium?.copyWith(
               color: ColorTheme.textSecondary,
             ),
           ),
           Text(
-            "Category: ${fund.category}",
+            "${context.l10n.category}: ${fund.category}",
             style: context.textTheme.bodyMedium?.copyWith(
               color: ColorTheme.textSecondary,
             ),
@@ -37,7 +44,7 @@ class FundItem extends StatelessWidget {
       ),
       leading: Icon(FluentIcons.savings_24_regular),
       trailing: CustomButton(
-        onPressed: () {},
+        onPressed: enable ? () => onSubscribe(fund) : null,
         label: context.l10n.subscribe,
         buttonType: CustomButtonType.filledTonal,
       ),

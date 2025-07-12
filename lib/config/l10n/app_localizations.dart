@@ -509,7 +509,7 @@ abstract class AppLocalizations {
   /// No description provided for @cancel.
   ///
   /// In en, this message translates to:
-  /// **'The request was manually cancelled by the user.'**
+  /// **'Cancel'**
   String get cancel;
 
   /// No description provided for @notInternet.
@@ -961,6 +961,126 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Total Balance'**
   String get totalBalance;
+
+  /// No description provided for @currentBalance.
+  ///
+  /// In en, this message translates to:
+  /// **'Current Balance:'**
+  String get currentBalance;
+
+  /// No description provided for @noDataAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'No data available'**
+  String get noDataAvailable;
+
+  /// No description provided for @cancellation.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancellation'**
+  String get cancellation;
+
+  /// No description provided for @subscription.
+  ///
+  /// In en, this message translates to:
+  /// **'Subscription'**
+  String get subscription;
+
+  /// No description provided for @type.
+  ///
+  /// In en, this message translates to:
+  /// **'Type'**
+  String get type;
+
+  /// No description provided for @fund.
+  ///
+  /// In en, this message translates to:
+  /// **'Fund'**
+  String get fund;
+
+  /// No description provided for @amount.
+  ///
+  /// In en, this message translates to:
+  /// **'Amount'**
+  String get amount;
+
+  /// No description provided for @date.
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get date;
+
+  /// No description provided for @subscriptionCancelSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Subscription cancel success'**
+  String get subscriptionCancelSuccess;
+
+  /// No description provided for @category.
+  ///
+  /// In en, this message translates to:
+  /// **'Category'**
+  String get category;
+
+  /// No description provided for @investment.
+  ///
+  /// In en, this message translates to:
+  /// **'Investment'**
+  String get investment;
+
+  /// No description provided for @status.
+  ///
+  /// In en, this message translates to:
+  /// **'Status'**
+  String get status;
+
+  /// No description provided for @action.
+  ///
+  /// In en, this message translates to:
+  /// **'Action'**
+  String get action;
+
+  /// No description provided for @active.
+  ///
+  /// In en, this message translates to:
+  /// **'Active'**
+  String get active;
+
+  /// No description provided for @minimum.
+  ///
+  /// In en, this message translates to:
+  /// **'Minimum'**
+  String get minimum;
+
+  /// No description provided for @invest_in.
+  ///
+  /// In en, this message translates to:
+  /// **'Invest in'**
+  String get invest_in;
+
+  /// No description provided for @your_balance.
+  ///
+  /// In en, this message translates to:
+  /// **'Your balance'**
+  String get your_balance;
+
+  /// No description provided for @next_balance.
+  ///
+  /// In en, this message translates to:
+  /// **'Next balance'**
+  String get next_balance;
+
+  /// No description provided for @minimum_amount.
+  ///
+  /// In en, this message translates to:
+  /// **'Minimum amount'**
+  String get minimum_amount;
+
+  /// No description provided for @confirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm'**
+  String get confirm;
 }
 
 class _AppLocalizationsDelegate

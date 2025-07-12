@@ -51,9 +51,14 @@ class AppDependencyInjection {
       ),
     );
 
+    getIt.registerLazySingleton<UserCubit>(
+      () => UserCubit(),
+    );
+
     getIt.registerLazySingleton<FundBloc>(
       () => FundBloc(
         getIt.get<FundUsecase>(),
+        getIt.get<UserCubit>(),
       ),
     );
 

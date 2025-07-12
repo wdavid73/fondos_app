@@ -223,6 +223,7 @@ class DarkTheme {
       ),
       popupMenuTheme: _basePopupMenuThemeData.copyWith(
         iconSize: context.dp(3),
+        color: ColorTheme.navigationBackgroundColorDark,
       ),
       dataTableTheme: _baseDataTableThemeData.copyWith(
         dataTextStyle: baseTextThemeDark.bodySmall,

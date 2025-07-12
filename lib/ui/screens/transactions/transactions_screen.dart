@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_starter_kit/app/dependency_injection.dart';
 import 'package:flutter_starter_kit/config/config.dart';
+import 'package:flutter_starter_kit/data/models/transaction_model.dart';
+import 'package:flutter_starter_kit/ui/blocs/blocs.dart';
+import 'package:flutter_starter_kit/ui/shared/styles/formats.dart';
 import 'package:flutter_starter_kit/ui/widgets/adaptive_scaffold.dart';
 
 class TransactionsScreen extends StatelessWidget {
@@ -29,7 +34,13 @@ class _Body extends StatelessWidget {
             context.l10n.transactions,
             style: context.textTheme.headlineMedium,
           ),
-          _Table(),
+          BlocSelector<FundBloc, FundState, List<TransactionModel>>(
+            bloc: getIt.get<FundBloc>(),
+            selector: (state) => state.transactions,
+            builder: (context, transactions) {
+              return _Table(transactions: transactions);
+            },
+          ),
         ],
       ),
     );
@@ -37,7 +48,8 @@ class _Body extends StatelessWidget {
 }
 
 class _Table extends StatelessWidget {
-  const _Table();
+  final List<TransactionModel> transactions;
+  const _Table({this.transactions = const []});
 
   @override
   Widget build(BuildContext context) {
@@ -46,33 +58,31 @@ class _Table extends StatelessWidget {
       constraints: BoxConstraints(maxHeight: context.hp(60)),
       child: DataTable(
         columns: [
-          DataColumn(label: Text("name")),
-          DataColumn(label: Text("age")),
-          DataColumn(label: Text("role")),
+          DataColumn(label: Text(context.l10n.type)),
+          DataColumn(label: Text(context.l10n.fund)),
+          DataColumn(label: Text(context.l10n.amount)),
+          DataColumn(label: Text(context.l10n.date)),
         ],
-        rows: [
-          DataRow(
-            cells: [
-              DataCell(Text("Sarah")),
-              DataCell(Text("19")),
-              DataCell(Text("Student")),
-            ],
-          ),
-          DataRow(
-            cells: [
-              DataCell(Text("Sarah")),
-              DataCell(Text("19")),
-              DataCell(Text("Student")),
-            ],
-          ),
-          DataRow(
-            cells: [
-              DataCell(Text("Sarah")),
-              DataCell(Text("19")),
-              DataCell(Text("Student")),
-            ],
-          ),
-        ],
+        rows: transactions.isNotEmpty
+            ? transactions
+                .map((e) => DataRow(cells: [
+                      DataCell(Text("${context.l10n.getByKey(e.type)}")),
+                      DataCell(Text(e.fund.name)),
+                      DataCell(
+                          Text("${formatNumberMillion(e.fund.amountMin)}")),
+                      DataCell(Text(e.date.toString())),
+                    ]))
+                .toList()
+            : [
+                DataRow(
+                  cells: [
+                    DataCell(Text(context.l10n.noDataAvailable)),
+                    DataCell.empty,
+                    DataCell.empty,
+                    DataCell.empty,
+                  ],
+                )
+              ],
       ),
     );
   }

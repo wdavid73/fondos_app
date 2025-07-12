@@ -1,67 +1,121 @@
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_starter_kit/app/dependency_injection.dart';
 import 'package:flutter_starter_kit/config/config.dart';
+import 'package:flutter_starter_kit/data/models/fund_model.dart';
+import 'package:flutter_starter_kit/ui/blocs/blocs.dart';
+import 'package:flutter_starter_kit/ui/cubits/cubits.dart';
 import 'package:flutter_starter_kit/ui/shared/shared.dart';
+import 'package:flutter_starter_kit/ui/shared/styles/formats.dart';
+import 'package:flutter_starter_kit/ui/widgets/widgets.dart';
 
 class MyInvestmentExpandedLayout extends StatelessWidget {
   const MyInvestmentExpandedLayout({super.key});
 
+  void _onCancelSubscription(FundModel fund) {
+    final bloc = getIt.get<FundBloc>();
+    bloc.cancelSubscriptionToFund(fund);
+  }
+
+  void _listener(BuildContext context, FundState state) {
+    if (state.status == SubscribeFundStatus.error) {
+      CustomSnackBar.showSnackBar(
+        context,
+        message: state.errorSubscribe,
+        backgroundColor: ColorTheme.error,
+        icon: FluentIcons.warning_24_filled,
+      );
+    }
+
+    if (state.status == SubscribeFundStatus.cancel) {
+      CustomSnackBar.showSnackBar(
+        context,
+        message: context.l10n.subscriptionCancelSuccess,
+        backgroundColor: ColorTheme.accentColor,
+        icon: FluentIcons.checkmark_24_filled,
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 32.0, horizontal: 48.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Text(
-            context.l10n.myFunds,
-            style: context.textTheme.headlineMedium,
-          ),
-          AppSpacing.md,
-          Text(
-            context.l10n.activeFunds,
-            style: context.textTheme.titleMedium,
-          ),
-          AppSpacing.md,
-          _Table(),
-          AppSpacing.md,
-          Text(
-            context.l10n.balance,
-            style: context.textTheme.headlineMedium,
-          ),
-          AppSpacing.md,
-          SizedBox(
-            width: context.width,
-            child: Card(
-              child: Padding(
-                padding: const EdgeInsets.all(32),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  spacing: 10,
-                  children: [
-                    Text(
-                      context.l10n.totalBalance,
-                      style: context.textTheme.titleLarge,
-                    ),
-                    Text(
-                      "\$10.000",
-                      style: context.textTheme.headlineMedium,
-                    ),
-                  ],
+    return BlocListener<FundBloc, FundState>(
+      bloc: getIt.get<FundBloc>(),
+      listener: _listener,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 32.0, horizontal: 48.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Text(
+              context.l10n.myFunds,
+              style: context.textTheme.headlineMedium,
+            ),
+            AppSpacing.md,
+            Text(
+              context.l10n.activeFunds,
+              style: context.textTheme.titleMedium,
+            ),
+            AppSpacing.md,
+            BlocSelector<FundBloc, FundState, List<FundModel>>(
+              bloc: getIt.get<FundBloc>(),
+              selector: (state) => state.myFunds,
+              builder: (context, myFunds) {
+                return _Table(
+                  funds: myFunds,
+                  onCancel: (fund) => _onCancelSubscription(fund),
+                );
+              },
+            ),
+            AppSpacing.md,
+            Text(
+              context.l10n.balance,
+              style: context.textTheme.headlineMedium,
+            ),
+            AppSpacing.md,
+            SizedBox(
+              width: context.width,
+              child: Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(32),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    spacing: 10,
+                    children: [
+                      Text(
+                        context.l10n.totalBalance,
+                        style: context.textTheme.titleLarge,
+                      ),
+                      BlocSelector<UserCubit, UserState, double>(
+                        bloc: getIt.get<UserCubit>(),
+                        selector: (state) => state.balance,
+                        builder: (context, balance) {
+                          return Text(
+                            "${formatNumberMillion(balance.toString())}",
+                            style: context.textTheme.headlineMedium,
+                          );
+                        },
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-          AppSpacing.md,
-        ],
+            AppSpacing.md,
+          ],
+        ),
       ),
     );
   }
 }
 
 class _Table extends StatelessWidget {
-  const _Table();
+  final List<FundModel> funds;
+  final void Function(FundModel fund) onCancel;
+  const _Table({this.funds = const [], required this.onCancel});
 
   @override
   Widget build(BuildContext context) {
@@ -70,33 +124,42 @@ class _Table extends StatelessWidget {
       constraints: BoxConstraints(maxHeight: context.hp(60)),
       child: DataTable(
         columns: [
-          DataColumn(label: Text("name")),
-          DataColumn(label: Text("age")),
-          DataColumn(label: Text("role")),
+          DataColumn(label: Text(context.l10n.fund)),
+          DataColumn(label: Text(context.l10n.category)),
+          DataColumn(label: Text(context.l10n.investment)),
+          DataColumn(label: Text(context.l10n.status)),
+          DataColumn(label: Text(context.l10n.action)),
         ],
-        rows: [
-          DataRow(
-            cells: [
-              DataCell(Text("Sarah")),
-              DataCell(Text("19")),
-              DataCell(Text("Student")),
-            ],
-          ),
-          DataRow(
-            cells: [
-              DataCell(Text("Sarah")),
-              DataCell(Text("19")),
-              DataCell(Text("Student")),
-            ],
-          ),
-          DataRow(
-            cells: [
-              DataCell(Text("Sarah")),
-              DataCell(Text("19")),
-              DataCell(Text("Student")),
-            ],
-          ),
-        ],
+        rows: funds.isNotEmpty
+            ? funds
+                .map((fund) => DataRow(
+                      cells: [
+                        DataCell(Text(fund.name)),
+                        DataCell(Text(fund.category)),
+                        DataCell(
+                            Text("${formatNumberMillion(fund.amountMin)}")),
+                        DataCell(Chip(label: Text(context.l10n.active))),
+                        DataCell(
+                          CustomButton(
+                            onPressed: () => onCancel(fund),
+                            buttonType: CustomButtonType.text,
+                            label: context.l10n.cancel,
+                          ),
+                        ),
+                      ],
+                    ))
+                .toList()
+            : [
+                DataRow(
+                  cells: [
+                    DataCell(Text(context.l10n.noDataAvailable)),
+                    DataCell.empty,
+                    DataCell.empty,
+                    DataCell.empty,
+                    DataCell.empty,
+                  ],
+                )
+              ],
       ),
     );
   }
