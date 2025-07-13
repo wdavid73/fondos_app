@@ -7,13 +7,12 @@ import 'package:fondos_app/data/models/my_fund_model.dart';
 import 'package:fondos_app/ui/blocs/fund/fund_bloc.dart';
 import 'package:fondos_app/ui/cubits/cubits.dart';
 import 'package:fondos_app/ui/screens/home/widgets/dialog_subscribe_to_fund.dart';
+import 'package:fondos_app/ui/screens/home/widgets/fund_item.dart';
 import 'package:fondos_app/ui/shared/styles/app_spacing.dart';
 import 'package:fondos_app/ui/widgets/svg_picture_custom.dart';
 
-import '../widgets/fund_item.dart';
-
-class HomeScreenExpandedLayout extends StatelessWidget {
-  const HomeScreenExpandedLayout({super.key});
+class HomeScreenLayout extends StatelessWidget {
+  const HomeScreenLayout({super.key});
 
   void _showDialog(BuildContext context, FundModel fund) {
     showDialog(

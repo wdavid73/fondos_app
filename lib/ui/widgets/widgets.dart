@@ -9,6 +9,8 @@ export 'custom_drawer_header.dart';
 export 'custom_button.dart';
 export 'custom_radio_group_field.dart';
 export 'svg_picture_custom.dart';
+export 'mobile_app_bar.dart';
+export 'web_app_bar.dart';
 
 export 'adaptive_scaffold.dart';
 

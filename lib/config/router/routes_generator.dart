@@ -1,10 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:fondos_app/ui/widgets/shared_app_bar.dart';
+import 'package:fondos_app/config/config.dart';
+import 'package:fondos_app/ui/widgets/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:fondos_app/ui/screens/screens.dart';
-import 'routes_constants.dart';
-import 'routes_transitions.dart';
 
 /// A utility class that defines the application's route paths and generates the
 /// [GoRouter] route configuration.
@@ -44,10 +43,21 @@ class AppRoutes {
       if (kIsWeb)
         ShellRoute(
           builder: (context, state, child) {
-            return Scaffold(
-              appBar: WebAppBar(),
-              body: child,
-            );
+            return LayoutBuilder(builder: (context, constraints) {
+              final widthScreen = constraints.maxWidth;
+
+              final shortestSide = widthScreen < constraints.maxHeight
+                  ? widthScreen
+                  : constraints.maxHeight;
+
+              bool isMobile = shortestSide < 600;
+
+              return Scaffold(
+                appBar: !isMobile ? WebAppBar() : MobileAppBar(),
+                drawer: isMobile ? MobileDrawerAppBar() : null,
+                body: child,
+              );
+            });
           },
           routes: routes,
         )

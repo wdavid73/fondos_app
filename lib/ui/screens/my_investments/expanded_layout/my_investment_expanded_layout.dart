@@ -45,42 +45,54 @@ class MyInvestmentExpandedLayout extends StatelessWidget {
       bloc: getIt.get<FundBloc>(),
       listener: _listener,
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 32.0, horizontal: 48.0),
+        padding: const EdgeInsets.symmetric(vertical: 32.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Text(
-              context.l10n.myFunds,
-              style: context.textTheme.headlineMedium,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 48.0),
+              child: Text(
+                context.l10n.myFunds,
+                style: context.textTheme.headlineMedium,
+              ),
             ),
             AppSpacing.md,
-            Text(
-              context.l10n.activeFunds,
-              style: context.textTheme.titleMedium,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 48.0),
+              child: Text(
+                context.l10n.activeFunds,
+                style: context.textTheme.titleMedium,
+              ),
             ),
             AppSpacing.md,
-            BlocSelector<FundBloc, FundState, List<MyFundModel>>(
-              bloc: getIt.get<FundBloc>(),
-              selector: (state) => state.myFunds,
-              builder: (context, myFunds) {
-                return _Table(
-                  funds: myFunds,
-                  onCancel: (fund) => _onCancelSubscription(fund),
-                );
-              },
+            Center(
+              child: BlocSelector<FundBloc, FundState, List<MyFundModel>>(
+                bloc: getIt.get<FundBloc>(),
+                selector: (state) => state.myFunds,
+                builder: (context, myFunds) {
+                  return _Table(
+                    funds: myFunds,
+                    onCancel: (fund) => _onCancelSubscription(fund),
+                  );
+                },
+              ),
             ),
             AppSpacing.md,
-            Text(
-              context.l10n.balance,
-              style: context.textTheme.headlineMedium,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 48.0),
+              child: Text(
+                context.l10n.balance,
+                style: context.textTheme.headlineMedium,
+              ),
             ),
             AppSpacing.md,
-            SizedBox(
+            Container(
               width: context.width,
+              padding: const EdgeInsets.symmetric(horizontal: 48.0),
               child: Card(
                 child: Padding(
-                  padding: const EdgeInsets.all(32),
+                  padding: const EdgeInsets.all(16.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -120,82 +132,95 @@ class _Table extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double fontSize = context.dp(1);
-    return Container(
-      width: context.width,
-      constraints: BoxConstraints(maxHeight: context.hp(60)),
-      child: DataTable(
-        columns: [
-          DataColumn(
-            label: Text(
-              context.l10n.fund,
-              style: context.textTheme.titleSmall?.copyWith(fontSize: fontSize),
-            ),
-          ),
-          DataColumn(
-            label: Text(
-              context.l10n.category,
-              style: context.textTheme.titleSmall?.copyWith(fontSize: fontSize),
-            ),
-          ),
-          DataColumn(
-            label: Text(
-              context.l10n.notification,
-              style: context.textTheme.titleSmall?.copyWith(fontSize: fontSize),
-            ),
-          ),
-          DataColumn(
-            label: Text(
-              context.l10n.investment,
-              style: context.textTheme.titleSmall?.copyWith(fontSize: fontSize),
-            ),
-          ),
-          DataColumn(
-            label: Text(
-              context.l10n.status,
-              style: context.textTheme.titleSmall?.copyWith(fontSize: fontSize),
-            ),
-          ),
-          DataColumn(
-            label: Text(
-              context.l10n.action,
-              style: context.textTheme.titleSmall?.copyWith(fontSize: fontSize),
-            ),
-          ),
-        ],
-        rows: funds.isNotEmpty
-            ? funds
-                .map((fund) => DataRow(
-                      cells: [
-                        DataCell(Text(fund.name)),
-                        DataCell(Text(fund.category)),
-                        DataCell(Text(fund.notificationWay.label)),
-                        DataCell(
-                          Text("${formatNumberMillion(fund.investment)}"),
-                        ),
-                        DataCell(Chip(label: Text(context.l10n.active))),
-                        DataCell(
-                          CustomButton(
-                            onPressed: () => onCancel(fund),
-                            buttonType: CustomButtonType.text,
-                            label: context.l10n.cancel,
-                          ),
-                        ),
-                      ],
-                    ))
-                .toList()
-            : [
-                DataRow(
-                  cells: [
-                    DataCell(Text(context.l10n.noDataAvailable)),
-                    DataCell.empty,
-                    DataCell.empty,
-                    DataCell.empty,
-                    DataCell.empty,
-                    DataCell.empty,
-                  ],
-                )
+    final double fontSize = 16;
+    return Expanded(
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: DataTable(
+              columns: [
+                DataColumn(
+                  label: Text(
+                    context.l10n.fund,
+                    style: context.textTheme.titleSmall
+                        ?.copyWith(fontSize: fontSize),
+                  ),
+                ),
+                DataColumn(
+                  label: Text(
+                    context.l10n.category,
+                    style: context.textTheme.titleSmall
+                        ?.copyWith(fontSize: fontSize),
+                  ),
+                ),
+                DataColumn(
+                  label: Text(
+                    context.l10n.notification,
+                    style: context.textTheme.titleSmall
+                        ?.copyWith(fontSize: fontSize),
+                  ),
+                ),
+                DataColumn(
+                  label: Text(
+                    context.l10n.investment,
+                    style: context.textTheme.titleSmall
+                        ?.copyWith(fontSize: fontSize),
+                  ),
+                ),
+                DataColumn(
+                  label: Text(
+                    context.l10n.status,
+                    style: context.textTheme.titleSmall
+                        ?.copyWith(fontSize: fontSize),
+                  ),
+                ),
+                DataColumn(
+                  label: Text(
+                    context.l10n.action,
+                    style: context.textTheme.titleSmall
+                        ?.copyWith(fontSize: fontSize),
+                  ),
+                ),
               ],
+              rows: funds.isNotEmpty
+                  ? funds
+                      .map((fund) => DataRow(
+                            cells: [
+                              DataCell(Text(fund.name)),
+                              DataCell(Text(fund.category)),
+                              DataCell(Text(fund.notificationWay.label)),
+                              DataCell(
+                                Text("${formatNumberMillion(fund.investment)}"),
+                              ),
+                              DataCell(Chip(label: Text(context.l10n.active))),
+                              DataCell(
+                                CustomButton(
+                                  onPressed: () => onCancel(fund),
+                                  buttonType: CustomButtonType.text,
+                                  label: context.l10n.cancel,
+                                ),
+                              ),
+                            ],
+                          ))
+                      .toList()
+                  : [
+                      DataRow(
+                        cells: [
+                          DataCell(Text(context.l10n.noDataAvailable)),
+                          DataCell.empty,
+                          DataCell.empty,
+                          DataCell.empty,
+                          DataCell.empty,
+                          DataCell.empty,
+                        ],
+                      )
+                    ],
+            ),
+          ),
+        ),
       ),
     );
   }

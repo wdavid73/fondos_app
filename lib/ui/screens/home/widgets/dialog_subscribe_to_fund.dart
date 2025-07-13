@@ -41,7 +41,7 @@ class DialogSubscribeToFund extends StatelessWidget {
       },
       child: Dialog(
         child: SizedBox(
-          width: kIsWeb ? context.wp(40) : context.wp(70),
+          width: 500,
           height: kIsWeb ? context.hp(50) : context.hp(60),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
@@ -96,11 +96,17 @@ class DialogSubscribeToFund extends StatelessWidget {
                   },
                 ),
 
-                Text(
-                  "${context.l10n.next_balance}: ${formatNumberMillion((userBalance - investment).toString())}",
-                  style: context.textTheme.bodyLarge?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
+                BlocSelector<UserCubit, UserState, double>(
+                  bloc: getIt.get<UserCubit>(),
+                  selector: (state) => state.balance,
+                  builder: (context, balance) {
+                    return Text(
+                      "${context.l10n.next_balance}: ${formatNumberMillion((balance - investment).toString())}",
+                      style: context.textTheme.bodyLarge?.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    );
+                  },
                 ),
 
                 AppSpacing.lg,
