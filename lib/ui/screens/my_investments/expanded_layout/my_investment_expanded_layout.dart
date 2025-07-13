@@ -11,14 +11,20 @@ import 'package:fondos_app/ui/shared/shared.dart';
 import 'package:fondos_app/ui/shared/styles/formats.dart';
 import 'package:fondos_app/ui/widgets/widgets.dart';
 
+/// A layout widget for displaying the user's investments in expanded (desktop/web) view.
+///
+/// Shows a table of active funds, balance information, and handles subscription cancellation.
 class MyInvestmentExpandedLayout extends StatelessWidget {
+  /// Creates a [MyInvestmentExpandedLayout] widget.
   const MyInvestmentExpandedLayout({super.key});
 
+  /// Handles the cancellation of a fund subscription.
   void _onCancelSubscription(MyFundModel fund) {
     final bloc = getIt.get<FundBloc>();
     bloc.cancelSubscriptionToFund(fund);
   }
 
+  /// Listener for fund state changes to show feedback.
   void _listener(BuildContext context, FundState state) {
     if (state.status == SubscribeFundStatus.error) {
       CustomSnackBar.showSnackBar(
@@ -40,6 +46,8 @@ class MyInvestmentExpandedLayout extends StatelessWidget {
   }
 
   @override
+
+  /// Builds the widget tree for the expanded investments layout.
   Widget build(BuildContext context) {
     return BlocListener<FundBloc, FundState>(
       bloc: getIt.get<FundBloc>(),
@@ -123,12 +131,20 @@ class MyInvestmentExpandedLayout extends StatelessWidget {
   }
 }
 
+/// Internal table widget for displaying a list of user's funds.
 class _Table extends StatelessWidget {
+  /// The list of user's funds.
   final List<MyFundModel> funds;
+
+  /// Callback triggered when the user cancels a subscription.
   final void Function(MyFundModel fund) onCancel;
+
+  /// Creates a [_Table] widget.
   const _Table({this.funds = const [], required this.onCancel});
 
   @override
+
+  /// Builds the widget tree for the funds table.
   Widget build(BuildContext context) {
     final double fontSize = 16;
     return Expanded(

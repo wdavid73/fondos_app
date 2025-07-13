@@ -2,15 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:fondos_app/config/config.dart';
 
-// Extension for BuildContext to get screen width easily
-// If you already have a similar extension, you can use that.
+// Extension for BuildContext to get screen width and theme properties easily
+/// Extension methods for [BuildContext] to access theme brightness and color scheme.
 extension ContextExtensions on BuildContext {
+  /// Returns the current theme brightness (light or dark).
   Brightness get brightness => Theme.of(this).brightness;
+
+  /// Returns the current color scheme.
   ColorScheme get colorScheme => Theme.of(this).colorScheme;
 }
 
 /// A widget that displays a shimmering list of placeholder items.
-/// It is typically used to indicate that data is loading.
+///
+/// Typically used to indicate that data is loading in a vertical list format.
 class ShimmerList extends StatelessWidget {
   /// The number of placeholder items to display in the list.
   final int itemCount;
@@ -65,7 +69,8 @@ class ShimmerList extends StatelessWidget {
 }
 
 /// A widget that displays a shimmering grid of placeholder items.
-/// It is typically used to indicate that data in a grid format is loading.
+///
+/// Typically used to indicate that data in a grid format is loading.
 class ShimmerGrid extends StatelessWidget {
   /// The number of placeholder items to display in the grid.
   final int itemCount;
@@ -124,15 +129,14 @@ class ShimmerGrid extends StatelessWidget {
   }
 }
 
-/// A widget that displays a horizontal shimmering list of placeholder items,
-/// which can be either circles or rounded rectangles.
-/// It is typically used to indicate that horizontally arranged data is loading.
+/// A widget that displays a horizontal shimmering list of placeholder items.
+///
+/// Items can be either circles or rounded rectangles. Typically used to indicate that horizontally arranged data is loading.
 class ShimmerHorizontalList extends StatelessWidget {
   /// The number of placeholder items to display in the horizontal list.
   final int itemCount;
 
-  /// Determines if the placeholder items should be circles or rounded rectangles.
-  /// Defaults to false (rounded rectangles).
+  /// Determines if the placeholder items should be circles or rounded rectangles. Defaults to false (rounded rectangles).
   final bool isCircle;
 
   /// Creates a [ShimmerHorizontalList] widget.

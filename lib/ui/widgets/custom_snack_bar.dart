@@ -1,28 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:fondos_app/config/config.dart';
 
+/// Utility class for displaying custom SnackBars in the application.
+///
+/// Provides a static method to show a SnackBar with customizable content, icon, color, and duration.
 class CustomSnackBar {
-  /// Displays a custom SnackBar.
+  /// Displays a custom SnackBar in the given [context].
   ///
-  /// This method shows a SnackBar with either a custom content widget or a
-  /// text message. You can also provide an icon, an action, and customize
-  /// the background color, text style, and duration.
+  /// Shows either a text [message] or a [customContent] widget. You can also provide an [icon],
+  /// [colorIcon], [backgroundColor], [textStyle], [action], and [duration].
   ///
-  /// Only one of `message` or `customContent` should be provided. If both are
-  /// provided or if neither is provided (and `message` is null or empty), an
-  /// [ArgumentError] will be thrown.
-  ///
-  /// Parameters:
-  ///   - [context]: The [BuildContext] to use for showing the SnackBar.
-  ///   - [message]: The text message to display in the SnackBar.
-  ///   - [action]: An optional [SnackBarAction] to add to the SnackBar.
-  ///   - [customContent]: An optional custom widget to display in the SnackBar.
-  ///   - [icon]: An optional icon to display in the SnackBar.
-  ///   - [colorIcon]: The color of the icon. Defaults to [ColorTheme.white] if not provided.
-  ///   - [backgroundColor]: The background color of the SnackBar.
-  ///   - [textStyle]: The text style for the message.
-  ///   - [duration]: The duration for which the SnackBar should be displayed.
-  ///     Defaults to 3000 milliseconds (3 seconds).
+  /// Only one of [message] or [customContent] should be provided. If both or neither are provided,
+  /// an [ArgumentError] is thrown.
   static void showSnackBar(
     BuildContext context, {
     String? message,

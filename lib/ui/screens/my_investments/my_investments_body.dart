@@ -11,14 +11,20 @@ import 'package:fondos_app/ui/shared/shared.dart';
 import 'package:fondos_app/ui/shared/styles/formats.dart';
 import 'package:fondos_app/ui/widgets/widgets.dart';
 
+/// Body widget for the My Investments screen.
+///
+/// Displays the user's active funds, allows cancellation, and shows balance information.
 class MyInvestmentBody extends StatelessWidget {
+  /// Creates a [MyInvestmentBody] widget.
   const MyInvestmentBody({super.key});
 
+  /// Handles the cancellation of a fund subscription.
   void _onCancelSubscription(MyFundModel fund) {
     final bloc = getIt.get<FundBloc>();
     bloc.cancelSubscriptionToFund(fund);
   }
 
+  /// Listener for fund state changes to show feedback.
   void _listener(BuildContext context, FundState state) {
     if (state.status == SubscribeFundStatus.error) {
       CustomSnackBar.showSnackBar(
@@ -40,6 +46,8 @@ class MyInvestmentBody extends StatelessWidget {
   }
 
   @override
+
+  /// Builds the widget tree for the my investments body.
   Widget build(BuildContext context) {
     return BlocListener<FundBloc, FundState>(
       bloc: getIt.get<FundBloc>(),
@@ -114,13 +122,20 @@ class MyInvestmentBody extends StatelessWidget {
   }
 }
 
+/// Internal widget for displaying a list of user's funds.
 class _ListInvestments extends StatelessWidget {
+  /// The list of user's funds.
   final List<MyFundModel> funds;
+
+  /// Callback triggered when the user cancels a subscription.
   final void Function(MyFundModel fund) onCancel;
 
+  /// Creates a [_ListInvestments] widget.
   const _ListInvestments({this.funds = const [], required this.onCancel});
 
   @override
+
+  /// Builds the widget tree for the funds list.
   Widget build(BuildContext context) {
     if (funds.isEmpty) {
       return Expanded(

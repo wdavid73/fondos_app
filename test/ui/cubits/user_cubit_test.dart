@@ -1,3 +1,11 @@
+/// {@template user_cubit_test}
+/// Unit tests for the [UserCubit], which manages user state such as balance and name.
+///
+/// These tests cover:
+/// - Changing the user's balance
+/// - Ensuring other user state properties remain unchanged
+/// - Handling negative and decimal values for balance
+/// {@endtemplate}
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fondos_app/ui/cubits/cubits.dart';
 import 'package:mocktail/mocktail.dart';
@@ -20,6 +28,9 @@ void main() {
   });
 
   group("Test UserCubit", () {
+    /// {@template user_cubit_test_group}
+    /// Tests for the [UserCubit] class, focusing on balance changes and state integrity.
+    /// {@endtemplate}
     test("Must change balance sheet correctly", () {
       double newBalance = 300000;
       userCubit.changeBalance(newBalance);

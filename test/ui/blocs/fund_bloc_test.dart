@@ -1,3 +1,13 @@
+/// {@template fund_bloc_test}
+/// Unit tests for the [FundBloc], which manages the state and logic for investment funds,
+/// including loading funds, subscribing, and cancelling subscriptions.
+///
+/// These tests cover:
+/// - Loading funds and handling errors
+/// - Subscribing to funds, including validation and state updates
+/// - Cancelling fund subscriptions and related state transitions
+/// - Integration with [UserCubit] and [FundUseCase]
+/// {@endtemplate}
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fondos_app/data/models/fund_model.dart';
 import 'package:fondos_app/data/models/my_fund_model.dart';
@@ -53,6 +63,10 @@ void main() {
   });
 
   group('LoadFundEvent', () {
+    /// {@template fund_bloc_test_load_fund_event}
+    /// Tests for the [LoadFundEvent], ensuring correct loading, error handling,
+    /// and state transitions when fetching funds.
+    /// {@endtemplate}
     final List<FundModel> tFunds = [
       FundModel(
           id: '1', name: 'Fund A', amountMin: '100', category: 'Category A'),
@@ -121,6 +135,10 @@ void main() {
     );
   });
   group('SubscribeFundEvent', () {
+    /// {@template fund_bloc_test_subscribe_fund_event}
+    /// Tests for the [SubscribeFundEvent], covering successful subscriptions,
+    /// validation errors, user balance updates, and error handling.
+    /// {@endtemplate}
     final FundModel testFund = FundModel(
       id: 'fund1',
       name: 'Test Fund',
@@ -330,6 +348,10 @@ void main() {
     );
   });
   group('CancelSubscribeFundEvent', () {
+    /// {@template fund_bloc_test_cancel_subscribe_fund_event}
+    /// Tests for the [CancelSubscribeFundEvent], ensuring correct cancellation logic,
+    /// user balance updates, transaction creation, and error handling.
+    /// {@endtemplate}
     final MyFundModel subscribedFund = MyFundModel(
       id: '1',
       name: 'My Subscribed Fund',

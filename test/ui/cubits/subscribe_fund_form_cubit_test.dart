@@ -1,3 +1,14 @@
+/// {@template subscribe_fund_form_cubit_test}
+/// Unit tests for the [SubscribeFundFormCubit], which manages the state and logic
+/// for subscribing to a fund, including validation of input fields and interaction
+/// with the [FundBloc].
+///
+/// These tests cover:
+/// - Form submission and validation logic
+/// - Notification method changes
+/// - Amount input changes and validation
+/// - Integration with [FundBloc] and expected state transitions
+/// {@endtemplate}
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fondos_app/data/models/fund_model.dart';
 import 'package:fondos_app/ui/blocs/fund/fund_bloc.dart';
@@ -41,6 +52,11 @@ void main() {
   tearDown(() {
     cubit.close();
   });
+
+  /// {@template subscribe_fund_form_cubit_test_on_submit}
+  /// Tests for the [SubscribeFundFormCubit.onSubmit] method, ensuring correct
+  /// validation, state updates, and interaction with [FundBloc] when submitting the form.
+  /// {@endtemplate}
   group("onSubmit()", () {
     blocTest<SubscribeFundFormCubit, SubscribeFundFormState>(
       'should validate fields before submitting when initial state is invalid',
@@ -210,6 +226,10 @@ void main() {
     );
   });
 
+  /// {@template subscribe_fund_form_cubit_test_method_changed}
+  /// Tests for the [SubscribeFundFormCubit.methodChanged] method, verifying that
+  /// notification method changes update the state and validation correctly.
+  /// {@endtemplate}
   group("methodChanged()", () {
     blocTest<SubscribeFundFormCubit, SubscribeFundFormState>(
       'should update notification method',
@@ -265,6 +285,10 @@ void main() {
     );
   });
 
+  /// {@template subscribe_fund_form_cubit_test_amount_changed}
+  /// Tests for the [SubscribeFundFormCubit.amountChanged] method, ensuring correct
+  /// validation and state updates for various amount input scenarios.
+  /// {@endtemplate}
   group("amountChange()", () {
     blocTest<SubscribeFundFormCubit, SubscribeFundFormState>(
       "Must validate minimum amount",

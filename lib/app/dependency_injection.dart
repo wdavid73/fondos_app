@@ -10,7 +10,16 @@ import 'package:get_it/get_it.dart';
 
 final GetIt getIt = GetIt.instance;
 
+/// Clase encargada de la inyección de dependencias de la aplicación.
+///
+/// Utiliza el paquete [get_it] para registrar repositorios, casos de uso,
+/// servicios, cubits y BLoCs como singletons o factories, permitiendo
+/// su acceso global y facilitando la gestión de dependencias.
 class AppDependencyInjection {
+  /// Inicializa y registra todas las dependencias necesarias para la aplicación.
+  ///
+  /// Este método debe ser llamado al inicio de la aplicación para asegurar
+  /// que todas las dependencias estén disponibles mediante [getIt].
   static void init() {
     /// Repositories
     getIt.registerLazySingleton<AuthRepository>(

@@ -16,14 +16,23 @@ import 'package:go_router/go_router.dart';
 
 double userBalance = getIt.get<UserCubit>().state.balance;
 
+/// A dialog widget for subscribing to an investment fund.
+///
+/// Displays fund details, an input for investment amount, notification method selection,
+/// and confirmation/cancellation buttons.
 class DialogSubscribeToFund extends StatelessWidget {
+  /// The fund to subscribe to.
   final FundModel fund;
+
+  /// Creates a [DialogSubscribeToFund] widget.
   const DialogSubscribeToFund({
     super.key,
     required this.fund,
   });
 
   @override
+
+  /// Builds the widget tree for the subscribe to fund dialog.
   Widget build(BuildContext context) {
     final cubit = context.read<SubscribeFundFormCubit>();
     final state = context.watch<SubscribeFundFormCubit>().state;

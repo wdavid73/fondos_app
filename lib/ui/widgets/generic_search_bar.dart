@@ -3,18 +3,35 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+/// Callback type for search queries.
 typedef SearchCallback = void Function(String query);
+
+/// Extracts a list of suggestions from a given state.
 typedef ExtractSuggestions<T, S> = List<T> Function(S state);
+
+/// Builds a widget for a suggestion item.
 typedef SuggestionBuilder<T> = Widget Function(
     BuildContext context, T item, SearchController controller);
 
+/// A generic search bar widget integrated with a BLoC for suggestions.
+///
+/// This widget provides a search bar that interacts with a BLoC to fetch and display suggestions.
+/// It supports debounced search queries and custom suggestion item builders.
 class GenericBlocSearchBar<T, BlocType extends BlocBase<StateType>, StateType>
     extends StatefulWidget {
+  /// Called when the search query changes.
   final SearchCallback onSearch;
+
+  /// Extracts suggestions from the BLoC state.
   final ExtractSuggestions<T, StateType> extractSuggestions;
+
+  /// Builds a widget for each suggestion item.
   final SuggestionBuilder<T> itemBuilder;
+
+  /// The hint text to display in the search bar.
   final String hintText;
 
+  /// Creates a [GenericBlocSearchBar] widget.
   const GenericBlocSearchBar({
     super.key,
     required this.onSearch,
@@ -28,6 +45,9 @@ class GenericBlocSearchBar<T, BlocType extends BlocBase<StateType>, StateType>
       _GenericBlocSearchBarState<T, BlocType, StateType>();
 }
 
+/// State for [GenericBlocSearchBar].
+///
+/// Manages the search controller, debouncing, and builds the UI for suggestions.
 class _GenericBlocSearchBarState<T, BlocType extends BlocBase<StateType>,
     StateType> extends State<GenericBlocSearchBar<T, BlocType, StateType>> {
   late final SearchController _searchController;
@@ -39,6 +59,7 @@ class _GenericBlocSearchBarState<T, BlocType extends BlocBase<StateType>,
     _searchController = SearchController();
   }
 
+  /// Handles debounced search query changes.
   void _onQueryChanged(String query) {
     if (_debounce?.isActive ?? false) _debounce!.cancel();
 

@@ -93,12 +93,14 @@ class CustomTextFormField extends StatelessWidget {
     this.inputFormatters,
   });
 
-  /// Returns true if the text field is a password field.
+  /// Returns true if the text field is a password field (obscure text).
   bool get hasObscure {
     return toggleObscure != null;
   }
 
   @override
+
+  /// Builds the widget tree for the custom text form field.
   Widget build(BuildContext context) {
     return Container(
       decoration: decoration,

@@ -5,14 +5,23 @@ import 'package:fondos_app/ui/blocs/blocs.dart';
 import 'package:fondos_app/ui/cubits/cubits.dart';
 import 'package:fondos_app/ui/widgets/widgets.dart';
 
+/// Widget that displays the sign-in form for user authentication.
+///
+/// This widget provides input fields for email and password, and a button to submit the login form.
+/// It also listens to authentication state changes to show feedback using SnackBars.
 class FormSignIn extends StatelessWidget {
+  /// Creates a [FormSignIn] widget.
   const FormSignIn({super.key});
 
+  /// Handles the login button press, unfocusing the current input and submitting the form.
   void _login(BuildContext context) {
     context.unfocus();
     context.read<SignInFormCubit>().onSubmit();
   }
 
+  /// Listens to authentication state changes and shows a SnackBar with feedback.
+  ///
+  /// Shows an error message if authentication fails, or a success message if login is successful.
   void _listenerShowSnackBar(BuildContext context, AuthState state) async {
     if (state.authStatus == AuthStatus.notAuthenticated &&
         state.errorMessage != '') {
@@ -35,6 +44,8 @@ class FormSignIn extends StatelessWidget {
   }
 
   @override
+
+  /// Builds the widget tree for the sign-in form.
   Widget build(BuildContext context) {
     final cubit = context.read<SignInFormCubit>();
     final state = context.watch<SignInFormCubit>().state;

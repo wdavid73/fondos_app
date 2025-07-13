@@ -11,9 +11,14 @@ import 'package:fondos_app/ui/screens/home/widgets/fund_item.dart';
 import 'package:fondos_app/ui/shared/styles/app_spacing.dart';
 import 'package:fondos_app/ui/widgets/svg_picture_custom.dart';
 
+/// Layout widget for the home screen displaying available investment funds.
+///
+/// Shows a list of funds, handles subscription dialog, and manages duplicate fund logic.
 class HomeScreenLayout extends StatelessWidget {
+  /// Creates a [HomeScreenLayout] widget.
   const HomeScreenLayout({super.key});
 
+  /// Shows the dialog to subscribe to a fund.
   void _showDialog(BuildContext context, FundModel fund) {
     showDialog(
       context: context,
@@ -31,12 +36,15 @@ class HomeScreenLayout extends StatelessWidget {
     );
   }
 
+  /// Checks if there are duplicate fund IDs between two lists.
   bool hasDuplicateId(List<FundModel> listA, List<MyFundModel> listB) {
     final idsA = listA.map((a) => a.id).toSet();
     return listB.any((b) => idsA.contains(b.id));
   }
 
   @override
+
+  /// Builds the widget tree for the home screen layout.
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(32),

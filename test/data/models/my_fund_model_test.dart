@@ -1,9 +1,22 @@
+/// {@template my_fund_model_test}
+/// Unit tests for the [MyFundModel] data class, which extends [FundModel] and adds
+/// investment and notificationWay properties for user-specific fund subscriptions.
+///
+/// These tests cover:
+/// - Construction and property validation
+/// - Inheritance from FundModel
+/// - Handling of investment and notificationWay fields
+/// - Edge cases and instance differentiation
+/// {@endtemplate}
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fondos_app/data/models/fund_model.dart';
 import 'package:fondos_app/data/models/my_fund_model.dart';
 import 'package:fondos_app/ui/shared/notification_way.dart';
 
 void main() {
+  /// {@template my_fund_model_test_group}
+  /// Tests for the [MyFundModel] class, covering construction, inheritance, and property validation.
+  /// {@endtemplate}
   group('MyFundModel', () {
     const testId = 'test-id';
     const testName = 'Test Fund';

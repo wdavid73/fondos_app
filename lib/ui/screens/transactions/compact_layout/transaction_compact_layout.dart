@@ -7,10 +7,16 @@ import 'package:fondos_app/ui/blocs/blocs.dart';
 import 'package:fondos_app/ui/shared/notification_way.dart';
 import 'package:fondos_app/ui/shared/styles/formats.dart';
 
+/// A compact layout widget for displaying transactions (mobile/tablet view).
+///
+/// Shows a list of transactions using a vertical list.
 class TransactionCompactLayout extends StatelessWidget {
+  /// Creates a [TransactionCompactLayout] widget.
   const TransactionCompactLayout({super.key});
 
   @override
+
+  /// Builds the widget tree for the compact transactions layout.
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
@@ -36,12 +42,17 @@ class TransactionCompactLayout extends StatelessWidget {
   }
 }
 
+/// Internal widget for displaying a list of transactions.
 class _ListInvestments extends StatelessWidget {
+  /// The list of transactions to display.
   final List<TransactionModel> transactions;
 
+  /// Creates a [_ListInvestments] widget.
   const _ListInvestments({this.transactions = const []});
 
   @override
+
+  /// Builds the widget tree for the transactions list.
   Widget build(BuildContext context) {
     if (transactions.isEmpty) {
       return Expanded(

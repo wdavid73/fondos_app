@@ -37,6 +37,8 @@ class CustomRadioGroupField<T> extends StatelessWidget {
   });
 
   @override
+
+  /// Builds the widget tree for the custom radio group field.
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

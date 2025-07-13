@@ -8,10 +8,16 @@ import 'package:fondos_app/ui/shared/styles/formats.dart';
 import 'package:fondos_app/ui/widgets/widgets.dart';
 import 'package:go_router/go_router.dart';
 
+/// A custom AppBar widget for web platforms.
+///
+/// Displays navigation buttons, theme switch, and user profile information.
 class WebAppBar extends StatelessWidget implements PreferredSizeWidget {
+  /// Creates a [WebAppBar] widget.
   const WebAppBar({super.key});
 
   @override
+
+  /// Builds the widget tree for the web app bar.
   Widget build(BuildContext context) {
     final userCubit = getIt.get<UserCubit>();
     return AppBar(
@@ -125,5 +131,7 @@ class WebAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
+
+  /// The preferred size of the app bar.
   Size get preferredSize => Size.fromHeight(kToolbarHeight);
 }

@@ -1,3 +1,13 @@
+/// {@template transactions_screen_test}
+/// Widget tests for the [TransactionsScreen] widget.
+///
+/// These tests verify:
+/// - Rendering of title
+/// - Empty state and transaction list rendering
+/// - Absence of direct error and loader display
+///
+/// The tests use a mocked [FundBloc] and dependency injection for isolation.
+/// {@endtemplate}
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

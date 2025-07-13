@@ -1,3 +1,17 @@
+/// {@template home_screen_test}
+/// Widget tests for the [HomeScreen] widget.
+///
+/// These tests verify:
+/// - Rendering of titles and descriptions
+/// - Loader, error, and empty states
+/// - Fund list rendering
+/// - SnackBars for success and error events
+///
+/// The tests use a mocked [FundBloc] and dependency injection for isolation.
+/// {@endtemplate}
+/// Widget test for the HomeScreen widget.
+///
+/// Verifies rendering of titles, loading, error, empty state, fund list, and SnackBars for success and error.
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

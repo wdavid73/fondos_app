@@ -9,11 +9,20 @@ import 'package:formz/formz.dart';
 
 part 'subscribe_fund_form_state.dart';
 
+/// Cubit that manages the state and logic for subscribing to an investment fund.
+///
+/// Handles form validation, submission, and updates related to the subscription process.
 class SubscribeFundFormCubit extends Cubit<SubscribeFundFormState> {
+  /// The [FundBloc] used to interact with fund-related actions.
   final FundBloc _fundBloc;
 
+  /// Creates a [SubscribeFundFormCubit] instance.
   SubscribeFundFormCubit(this._fundBloc) : super(SubscribeFundFormState());
 
+  /// Submits the subscription form for the given [fund].
+  ///
+  /// Validates all fields, emits a loading state, and triggers the subscription process.
+  /// Waits for the result and updates the state accordingly.
   void onSubmit(FundModel fund) async {
     _touchEveryField(minimumAllowed: fund.amountMin);
 
@@ -40,6 +49,10 @@ class SubscribeFundFormCubit extends Cubit<SubscribeFundFormState> {
     emit(state.copyWith(isPosting: false));
   }
 
+  /// Updates the amount field and validates the form.
+  ///
+  /// [value] is the new amount entered by the user.
+  /// [minimumAllowed] is the minimum allowed value for the investment.
   void amountChanged(String value, {String minimumAllowed = '0'}) {
     double minAllow = double.parse(minimumAllowed);
     final input = AmountInput.dirty(value, minimumAllowed: minAllow);
@@ -49,6 +62,9 @@ class SubscribeFundFormCubit extends Cubit<SubscribeFundFormState> {
     ));
   }
 
+  /// Updates the notification method field and validates the form.
+  ///
+  /// [notification] is the selected notification method.
   void methodChanged(NotificationWay notification) {
     final input = GenericOptionInput<NotificationWay>.dirty(notification);
     emit(state.copyWith(
@@ -57,6 +73,9 @@ class SubscribeFundFormCubit extends Cubit<SubscribeFundFormState> {
     ));
   }
 
+  /// Marks all fields as touched to trigger validation.
+  ///
+  /// [minimumAllowed] is the minimum allowed value for the investment.
   void _touchEveryField({String minimumAllowed = '0'}) {
     double minAllow = double.parse(minimumAllowed);
     final amount =

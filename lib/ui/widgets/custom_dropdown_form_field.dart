@@ -1,10 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:fondos_app/config/config.dart';
 
+/// A customizable dropdown form field widget.
+///
+/// Displays a dropdown menu with options, supporting custom item builders, validation, and styling.
 class CustomDropdownFormField extends StatelessWidget {
+  /// The list of options to display in the dropdown.
   final List<dynamic> options;
+
+  /// Function to build a [DropdownMenuItem] for each option value.
   final DropdownMenuItem<dynamic> Function(dynamic value) itemBuilder;
+
+  /// Callback triggered when the selected value changes.
   final void Function(dynamic)? onChanged;
+
+  /// Validator function for the selected value.
   final String? Function(dynamic)? validator;
 
   final BoxDecoration? decoration;
@@ -20,6 +30,7 @@ class CustomDropdownFormField extends StatelessWidget {
   final String hint;
   final String hintDisable;
 
+  /// Creates a [CustomDropdownFormField] widget.
   const CustomDropdownFormField({
     super.key,
     required this.options,
@@ -40,6 +51,8 @@ class CustomDropdownFormField extends StatelessWidget {
   });
 
   @override
+
+  /// Builds the widget tree for the custom dropdown form field.
   Widget build(BuildContext context) {
     return Container(
       decoration: decoration,

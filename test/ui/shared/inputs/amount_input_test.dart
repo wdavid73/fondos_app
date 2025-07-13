@@ -1,8 +1,25 @@
+/// {@template amount_input_test}
+/// Unit tests for the [AmountInput] form field, which handles numeric input validation
+/// including minimum value constraints, formatting, and error handling.
+///
+/// These tests cover:
+/// - Pure and dirty constructors
+/// - Validation logic for numeric, empty, and invalid input
+/// - Handling of minimum allowed values
+/// - Formatting with dots, commas, and negative values
+/// {@endtemplate}
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fondos_app/ui/shared/inputs/amount_input.dart';
 
 void main() {
+  /// {@template amount_input_test_group}
+  /// Tests for the [AmountInput] class, covering constructors, validation, and formatting scenarios.
+  /// {@endtemplate}
   group('AmountInput', () {
+    /// {@template amount_input_test_pure_constructor}
+    /// Tests for the pure constructor of [AmountInput], which creates an instance
+    /// with an empty value and no minimum allowed value.
+    /// {@endtemplate}
     group('pure constructor', () {
       test('should create pure AmountInput without minimum', () {
         // Arrange & Act
@@ -29,6 +46,10 @@ void main() {
       });
     });
 
+    /// {@template amount_input_test_dirty_constructor}
+    /// Tests for the dirty constructor of [AmountInput], which creates an instance
+    /// with a given value and no minimum allowed value.
+    /// {@endtemplate}
     group('dirty constructor', () {
       test('should create dirty AmountInput without minimum', () {
         // Arrange & Act
@@ -55,6 +76,10 @@ void main() {
       });
     });
 
+    /// {@template amount_input_test_validation}
+    /// Tests for the validation logic of [AmountInput], including handling of
+    /// numeric, empty, and invalid input, minimum allowed values, and formatting.
+    /// {@endtemplate}
     group('validation', () {
       test('should return null for valid numeric input', () {
         // Arrange
@@ -200,6 +225,10 @@ void main() {
       });
     });
 
+    /// {@template amount_input_test_error_message}
+    /// Tests for the [errorMessage] getter of [AmountInput], which returns the
+    /// error message for the current input value.
+    /// {@endtemplate}
     group('errorMessage', () {
       test('should return null for valid input', () {
         // Arrange
@@ -257,6 +286,10 @@ void main() {
       });
     });
 
+    /// {@template amount_input_test_edge_cases}
+    /// Tests for edge cases in [AmountInput], including handling of very large numbers,
+    /// single digits, multiple dots and commas, minimum values of zero, and negative values.
+    /// {@endtemplate}
     group('edge cases', () {
       test('should handle very large numbers', () {
         // Arrange
@@ -314,6 +347,10 @@ void main() {
       });
     });
 
+    /// {@template amount_input_test_error_validation}
+    /// Tests for the [AmountValidationError] enum, which defines the possible error
+    /// messages for invalid input.
+    /// {@endtemplate}
     group('AmountValidationError', () {
       test('should have correct error messages', () {
         // Assert

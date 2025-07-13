@@ -1,9 +1,22 @@
+/// {@template transaction_model_test}
+/// Unit tests for the [TransactionModel] data class, which represents a transaction
+/// related to an investment fund, including type, amount, date, and notificationWay.
+///
+/// These tests cover:
+/// - Construction and property validation
+/// - Handling of different transaction types and amounts
+/// - Optional notificationWay property
+/// - Edge cases for empty and different values
+/// {@endtemplate}
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fondos_app/data/models/fund_model.dart';
 import 'package:fondos_app/data/models/transaction_model.dart';
 import 'package:fondos_app/ui/shared/notification_way.dart';
 
 void main() {
+  /// {@template transaction_model_test_group}
+  /// Tests for the [TransactionModel] class, covering construction, property validation, and edge cases.
+  /// {@endtemplate}
   group('TransactionModel', () {
     const testType = 'investment';
     const testAmount = '5000';

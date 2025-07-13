@@ -1,3 +1,16 @@
+/// {@template my_investment_screen_test}
+/// Widget tests for the [MyInvestmentsScreen] widget.
+///
+/// These tests verify:
+/// - Rendering of titles and subtitles
+/// - Empty state and investment list rendering
+/// - SnackBars for cancel and error events
+///
+/// The tests use mocked [FundBloc] and [UserCubit] with dependency injection for isolation.
+/// {@endtemplate}
+/// Widget test for the MyInvestmentsScreen widget.
+///
+/// Verifies rendering of titles, empty state, investment list, and SnackBars for cancel and error.
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

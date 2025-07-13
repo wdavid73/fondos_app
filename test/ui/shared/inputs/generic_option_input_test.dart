@@ -1,7 +1,20 @@
+/// {@template generic_option_input_test}
+/// Unit tests for the [GenericOptionInput] form field, which handles generic option selection
+/// and validation for different data types (String, int, double, bool).
+///
+/// These tests cover:
+/// - Pure and dirty constructors for various types
+/// - Validation logic for null, empty, and valid values
+/// - Error message handling
+/// - Type-specific behaviors
+/// {@endtemplate}
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fondos_app/ui/shared/inputs/generic_option_input.dart';
 
 void main() {
+  /// {@template generic_option_input_test_group}
+  /// Tests for the [GenericOptionInput] class, covering constructors, validation, error messages, and type handling.
+  /// {@endtemplate}
   group('GenericOptionInput', () {
     group('pure constructor', () {
       test('should create pure GenericOptionInput with null value', () {

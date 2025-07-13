@@ -58,6 +58,9 @@ class CustomMultiSelectField extends StatefulWidget {
   State<CustomMultiSelectField> createState() => _CustomMultiSelectFieldState();
 }
 
+/// State for [CustomMultiSelectField].
+///
+/// Manages the internal controller, selection logic, and bottom sheet display.
 class _CustomMultiSelectFieldState extends State<CustomMultiSelectField> {
   late TextEditingController _internalController;
 
@@ -105,6 +108,8 @@ class _CustomMultiSelectFieldState extends State<CustomMultiSelectField> {
   }
 
   @override
+
+  /// Builds the widget tree for the custom multi-select field.
   Widget build(BuildContext context) {
     return TextFormField(
       readOnly: true,

@@ -7,10 +7,16 @@ import 'package:fondos_app/ui/blocs/blocs.dart';
 import 'package:fondos_app/ui/shared/notification_way.dart';
 import 'package:fondos_app/ui/shared/styles/formats.dart';
 
+/// An expanded layout widget for displaying transactions (desktop/web view).
+///
+/// Shows a table of transactions with details such as type, fund, notification, amount, and date.
 class TransactionExpandedLayout extends StatelessWidget {
+  /// Creates a [TransactionExpandedLayout] widget.
   const TransactionExpandedLayout({super.key});
 
   @override
+
+  /// Builds the widget tree for the expanded transactions layout.
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 32.0, horizontal: 48.0),
@@ -36,11 +42,17 @@ class TransactionExpandedLayout extends StatelessWidget {
   }
 }
 
+/// Internal table widget for displaying a list of transactions.
 class _Table extends StatelessWidget {
+  /// The list of transactions to display.
   final List<TransactionModel> transactions;
+
+  /// Creates a [_Table] widget.
   const _Table({this.transactions = const []});
 
   @override
+
+  /// Builds the widget tree for the transactions table.
   Widget build(BuildContext context) {
     final double fontSize = context.dp(1);
     return Container(

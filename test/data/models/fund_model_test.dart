@@ -1,7 +1,20 @@
+/// {@template fund_model_test}
+/// Unit tests for the [FundModel] data class, which represents an investment fund
+/// and provides serialization/deserialization logic.
+///
+/// These tests cover:
+/// - Construction and property validation
+/// - JSON serialization and deserialization
+/// - Inheritance from FundEntity and JsonSerializable
+/// - Handling of edge cases (empty, null, numeric IDs)
+/// {@endtemplate}
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fondos_app/data/models/fund_model.dart';
 
 void main() {
+  /// {@template fund_model_test_group}
+  /// Tests for the [FundModel] class, covering construction, JSON handling, inheritance, and edge cases.
+  /// {@endtemplate}
   group('FundModel', () {
     const testId = 'test-id';
     const testName = 'Test Fund';

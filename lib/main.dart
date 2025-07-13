@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:fondos_app/app/app.dart';
 import 'package:fondos_app/config/config.dart';
 
+/// Entry point for the application.
+///
+/// Initializes the app and runs the main widget.
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 

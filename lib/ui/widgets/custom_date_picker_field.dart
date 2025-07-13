@@ -61,6 +61,9 @@ class CustomDatePickerField extends StatefulWidget {
   State<CustomDatePickerField> createState() => _CustomDatePickerFieldState();
 }
 
+/// State for [CustomDatePickerField].
+///
+/// Manages the internal controller, date selection, and updates the field value.
 class _CustomDatePickerFieldState extends State<CustomDatePickerField> {
   late TextEditingController _internalController;
 
@@ -78,6 +81,7 @@ class _CustomDatePickerFieldState extends State<CustomDatePickerField> {
     super.dispose();
   }
 
+  /// Updates the controller text with the selected [date].
   void _updateControllerText(DateTime? date) {
     if (date != null) {
       _internalController.text = DateFormat(widget.dateFormat).format(date);
@@ -86,6 +90,7 @@ class _CustomDatePickerFieldState extends State<CustomDatePickerField> {
     }
   }
 
+  /// Opens the date picker dialog and updates the field value on selection.
   void _onTapDate() async {
     Locale myLocale = Localizations.localeOf(context);
     final DateTime? picked = await showDatePicker(
@@ -104,6 +109,8 @@ class _CustomDatePickerFieldState extends State<CustomDatePickerField> {
   }
 
   @override
+
+  /// Builds the widget tree for the custom date picker field.
   Widget build(BuildContext context) {
     return TextFormField(
       controller: _internalController,

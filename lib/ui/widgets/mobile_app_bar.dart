@@ -9,10 +9,14 @@ import 'package:fondos_app/ui/shared/styles/formats.dart';
 import 'package:fondos_app/ui/widgets/widgets.dart';
 import 'package:go_router/go_router.dart';
 
+/// A custom AppBar widget for mobile platforms.
 class MobileAppBar extends StatelessWidget implements PreferredSizeWidget {
+  /// Creates a [MobileAppBar] widget.
   const MobileAppBar({super.key});
 
   @override
+
+  /// Builds the widget tree for the mobile app bar.
   Widget build(BuildContext context) {
     return AppBar(
       actionsPadding: const EdgeInsets.all(10),
@@ -24,13 +28,19 @@ class MobileAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
+
+  /// The preferred size of the app bar.
   Size get preferredSize => Size.fromHeight(kToolbarHeight);
 }
 
+/// A custom Drawer widget for mobile platforms.
 class MobileDrawerAppBar extends StatelessWidget {
+  /// Creates a [MobileDrawerAppBar] widget.
   const MobileDrawerAppBar({super.key});
 
   @override
+
+  /// Builds the widget tree for the mobile drawer.
   Widget build(BuildContext context) {
     return Drawer(
       child: Padding(
@@ -51,6 +61,7 @@ class MobileDrawerAppBar extends StatelessWidget {
   }
 }
 
+/// Header section of the mobile drawer, displaying user info.
 class _DrawerHeader extends StatelessWidget {
   final String userName;
   final String balance;
@@ -110,6 +121,7 @@ class _DrawerHeader extends StatelessWidget {
   }
 }
 
+/// Body section of the mobile drawer, displaying navigation items.
 class _DrawerBody extends StatelessWidget {
   const _DrawerBody();
 
@@ -147,6 +159,7 @@ class _DrawerBody extends StatelessWidget {
   }
 }
 
+/// A single navigation item in the mobile drawer.
 class _DrawerItem extends StatelessWidget {
   final IconData icon;
   final String text;
@@ -169,6 +182,7 @@ class _DrawerItem extends StatelessWidget {
   }
 }
 
+/// The last item in the mobile drawer, typically for theme switching.
 class _LastDrawerItem extends StatelessWidget {
   const _LastDrawerItem();
 

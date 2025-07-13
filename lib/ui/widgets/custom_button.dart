@@ -91,6 +91,8 @@ class CustomButton extends StatelessWidget {
         );
 
   @override
+
+  /// Builds the widget tree for the custom button, rendering the appropriate Material button type.
   Widget build(BuildContext context) {
     // Determine the actual icon to display, considering the loading state.
     final Widget? actualIcon = _buttonIcon(icon: icon, context: context);

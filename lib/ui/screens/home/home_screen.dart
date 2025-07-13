@@ -8,7 +8,11 @@ import 'package:fondos_app/ui/widgets/widgets.dart';
 
 import 'package:fondos_app/config/config.dart';
 
+/// Main screen widget for the home page.
+///
+/// Initializes the fund bloc, listens for subscription events, and displays the home layout.
 class HomeScreen extends StatefulWidget {
+  /// Creates a [HomeScreen] widget.
   const HomeScreen({super.key});
 
   @override
@@ -22,11 +26,13 @@ class _HomeScreenState extends State<HomeScreen> {
     _init();
   }
 
+  /// Initializes the fund bloc by loading funds.
   void _init() {
     final bloc = getIt.get<FundBloc>();
     bloc.loadFunds();
   }
 
+  /// Listener for fund state changes to show feedback.
   void _listener(BuildContext context, FundState state) {
     if (state.status == SubscribeFundStatus.error) {
       CustomSnackBar.showSnackBar(
@@ -47,6 +53,8 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   @override
+
+  /// Builds the widget tree for the home screen.
   Widget build(BuildContext context) {
     return WrapperBlocs(
       child: BlocListener<FundBloc, FundState>(
@@ -60,11 +68,17 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
+/// Wrapper widget to provide necessary blocs to the home screen.
 class WrapperBlocs extends StatelessWidget {
+  /// The child widget to wrap with bloc providers.
   final Widget child;
+
+  /// Creates a [WrapperBlocs] widget.
   const WrapperBlocs({super.key, required this.child});
 
   @override
+
+  /// Builds the widget tree for the wrapper blocs.
   Widget build(BuildContext context) {
     final fundBloc = getIt.get<FundBloc>();
     return MultiBlocProvider(

@@ -4,11 +4,20 @@ import 'package:flutter/services.dart';
 import 'package:fondos_app/ui/widgets/custom_text_form_field.dart';
 import 'package:intl/intl.dart';
 
+/// A custom input field for entering money amounts with formatting.
+///
+/// Formats the input as currency and notifies changes.
 class MoneyInputField extends StatefulWidget {
+  /// Optional controller for the input field.
   final TextEditingController? controller;
+
+  /// Callback triggered when the value changes.
   final void Function(String)? onChanged;
+
+  /// Error message to display below the field.
   final String? errorMessage;
 
+  /// Creates a [MoneyInputField] widget.
   const MoneyInputField(
       {super.key, this.controller, this.onChanged, this.errorMessage});
 
@@ -16,6 +25,9 @@ class MoneyInputField extends StatefulWidget {
   State<MoneyInputField> createState() => _MoneyInputFieldState();
 }
 
+/// State for [MoneyInputField].
+///
+/// Manages the controller, formatting, and value changes.
 class _MoneyInputFieldState extends State<MoneyInputField> {
   late TextEditingController _controller;
 
@@ -28,6 +40,7 @@ class _MoneyInputFieldState extends State<MoneyInputField> {
     _controller.addListener(_formatValue);
   }
 
+  /// Formats the value in the controller as currency.
   void _formatValue() {
     String text = _controller.text.replaceAll('.', '').replaceAll(',', '');
     if (text.isEmpty) return;
@@ -55,6 +68,8 @@ class _MoneyInputFieldState extends State<MoneyInputField> {
   }
 
   @override
+
+  /// Builds the widget tree for the money input field.
   Widget build(BuildContext context) {
     return CustomTextFormField(
       controller: _controller,
