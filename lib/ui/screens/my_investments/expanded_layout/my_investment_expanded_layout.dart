@@ -66,17 +66,15 @@ class MyInvestmentExpandedLayout extends StatelessWidget {
               ),
             ),
             AppSpacing.md,
-            Center(
-              child: BlocSelector<FundBloc, FundState, List<MyFundModel>>(
-                bloc: getIt.get<FundBloc>(),
-                selector: (state) => state.myFunds,
-                builder: (context, myFunds) {
-                  return _Table(
-                    funds: myFunds,
-                    onCancel: (fund) => _onCancelSubscription(fund),
-                  );
-                },
-              ),
+            BlocSelector<FundBloc, FundState, List<MyFundModel>>(
+              bloc: getIt.get<FundBloc>(),
+              selector: (state) => state.myFunds,
+              builder: (context, myFunds) {
+                return _Table(
+                  funds: myFunds,
+                  onCancel: (fund) => _onCancelSubscription(fund),
+                );
+              },
             ),
             AppSpacing.md,
             Padding(
