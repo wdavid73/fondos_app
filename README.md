@@ -23,7 +23,6 @@ A Flutter template project with essential configurations and packages to quickly
 
 ### Core
 
-- `flutter`: ^3.6.0
 - `flutter_bloc`: ^9.0.0
 - `get_it`: ^8.0.3
 - `go_router`: ^15.1.3
@@ -66,8 +65,8 @@ The project follows Clean Architecture principles with:
 
 ### Prerequisites
 
-- Flutter SDK (^3.6.0)
-- Dart SDK (^3.6.0)
+- Flutter SDK (^3.32.0)
+- Dart SDK (^3.8.0)
 - FVM (Flutter Version Management)
 
 ### Setup
@@ -128,18 +127,11 @@ Run unit tests:
 fvm flutter test
 ```
 
-Run integration tests:
-
-```bash
-fvm flutter test --platform chrome test/integration_test/
-```
-
 ## Development
 
 The project includes development tools and configurations:
 
 - Code generation with `flutter_gen`
-- Environment configuration with `.env.template`
 - Native splash screen customization
 - Font configuration
 - Asset management
